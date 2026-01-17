@@ -7,11 +7,3 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-func _on_reset():
-	pass
-
-
-func _on_gamestate_controller_reset() -> void:
-	print("recieved, moving to player state")
-	$GamestateController.next_gamestate()
