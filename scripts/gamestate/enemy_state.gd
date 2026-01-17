@@ -10,3 +10,5 @@ func on_entered_state() -> void:
 func on_exited_state() -> void:
 	# Set all enemies finished
 	finishedEnemies = availableEnemies
+
+	emit_signal("all_enemies_finished")
