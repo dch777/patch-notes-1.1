@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://brl8026h7nfwm"]
+
+[ext_resource type="Script" uid="uid://btaru4d1fs8m7" path="res://scripts/test.gd" id="1_2r01n"]
+[ext_resource type="PackedScene" uid="uid://bdgnfve85idq6" path="res://logical/gamestate_controller.tscn" id="1_wxwic"]
+
+[node name="Test" type="Node2D"]
+script = ExtResource("1_2r01n")
+
+[node name="GamestateController" parent="." instance=ExtResource("1_wxwic")]
+
+[connection signal="reset" from="GamestateController" to="." method="_on_gamestate_controller_reset"]
