@@ -44,6 +44,6 @@ void fragment() {
 	vec4 texture_color = texture(TEXTURE, UV);
 	vec4 canvas_color = sample(canvas, map_pos - map_origin);
 	//COLOR.rg = (map_pos - map_origin) / 10.0;
-	COLOR = mix(texture_color, canvas_color, canvas_color.a * intensity * selected);
+	COLOR = mix(texture_color, canvas_color, canvas_color.a * selected * 0.3);
 	COLOR.a = texture_color.a;
 }

@@ -3,6 +3,7 @@ class_name Player extends Entity
 var active: bool = false
 
 func start() -> void:
+	moves = 5
 	active = true
 
 func end() -> void:
@@ -13,4 +14,8 @@ func map_clicked(map_pos: Vector2i) -> void:
 		move(map_pos)
 
 func move_finished() -> void:
-	finished.emit(self)
+	if moves == 0:
+		finished.emit(self)
+
+func draw(canvas: Canvas) -> void:
+	canvas.draw_reachable(moves + 1, map_position, Color.BLACK)

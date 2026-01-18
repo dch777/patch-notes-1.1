@@ -391,11 +391,11 @@ start_state = NodePath("player_turn")
 background = NodePath("background")
 foreground = NodePath("foreground")
 canvas = NodePath("canvas_viewport/canvas")
-diagonal_mode = 3
 
 [node name="canvas_viewport" type="SubViewport" parent="GamestateController"]
 transparent_bg = true
 canvas_item_default_texture_filter = 0
+size = Vector2i(1024, 1024)
 
 [node name="canvas" type="Node2D" parent="GamestateController/canvas_viewport" node_paths=PackedStringArray("controller", "canvas_viewport", "background", "foreground")]
 script = ExtResource("2_qm0ky")
@@ -422,6 +422,7 @@ tile_set = SubResource("TileSet_33hta")
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
+tile_map_data = PackedByteArray("AAD///7/AAAEAAUAAAD/////AAAEAAUAAAD//wAAAAAEAAUAAAD//wEAAAAEAAUAAAA=")
 tile_set = SubResource("TileSet_33hta")
 
 [node name="Line2D" type="Line2D" parent="GamestateController"]
@@ -453,8 +454,12 @@ map_position = Vector2i(-5, -5)
 speed = 10.0
 
 [node name="TextureRect" type="TextureRect" parent="GamestateController"]
-offset_right = 40.0
-offset_bottom = 40.0
+z_index = 10
+offset_left = -500.0
+offset_top = -239.0
+offset_right = 12.0
+offset_bottom = 273.0
 texture = SubResource("ViewportTexture_qm0ky")
+expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]

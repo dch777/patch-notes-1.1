@@ -4,6 +4,7 @@ var active: bool = false
 
 func start() -> void:
 	active = true
+	moves = 5
 	move(Vector2i((randi() % 10) - 5, (randi() % 10) - 5))
 
 func end() -> void:
@@ -12,5 +13,5 @@ func end() -> void:
 func move_finished() -> void:
 	finished.emit(self)
 
-func draw(canvas: Canvas, offset: Vector2) -> void:
-	canvas.draw_circle(Vector2(map_position) + offset, 2, Color.RED)
+func draw(canvas: Canvas) -> void:
+	canvas.draw_reachable(moves + 1, map_position, Color.RED)
