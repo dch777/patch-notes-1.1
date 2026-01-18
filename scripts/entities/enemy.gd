@@ -4,13 +4,13 @@ var active: bool = false
 
 func start() -> void:
 	active = true
+	move(Vector2i((randi() % 10) - 5, (randi() % 10) - 5))
 
 func end() -> void:
 	active = false
 
-func map_clicked(map_pos: Vector2i) -> void:
-	if active and (path.size() == 0 or map_pos != path[-1]):
-		move(map_pos)
-
 func move_finished() -> void:
 	finished.emit(self)
+
+func draw(canvas: Canvas, offset: Vector2) -> void:
+	canvas.draw_circle(Vector2(map_position) + offset, 2, Color.RED)

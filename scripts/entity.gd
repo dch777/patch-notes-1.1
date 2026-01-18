@@ -91,3 +91,6 @@ func move(dest: Vector2i) -> void:
 	
 func move_finished() -> void:
 	pass
+
+func draw(canvas: Canvas, offset: Vector2) -> void:
+	pass

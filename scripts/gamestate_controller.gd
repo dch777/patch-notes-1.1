@@ -5,9 +5,10 @@ var current_state: Gamestate
 
 @export var start_state: Gamestate
 
-@export_group("TileMapLayers")
+@export_group("Map")
 @export var background: TileMapLayer
 @export var foreground: TileMapLayer
+@export var canvas: Canvas
 
 @export_group("Navigation")
 var map: AStarGrid2D
@@ -30,6 +31,9 @@ func _ready():
 	for cell in foreground.get_used_cells():
 		map.set_point_solid(cell)
 
+	hover_shader.set_shader_parameter("map_origin", background.get_used_rect().position)
+	hover_shader.set_shader_parameter("global_pos_size", background.get_used_rect().size)
+
 	entities.assign(find_children("*", "Entity"))
 	hud = find_child("hud")
 	for state in find_children("*", "Gamestate"):
@@ -41,10 +45,11 @@ func _ready():
 
 func _process(delta: float):
 	var hovered_cell = background.local_to_map(get_local_mouse_position())
-	var hovered_cell_global_coords = map_to_global(hovered_cell)
 	var reachable = map.is_in_boundsv(hovered_cell) && !map.is_point_solid(hovered_cell)
-	hover_shader.set_shader_parameter("highlighted_cell", hovered_cell_global_coords)
-	hover_shader.set_shader_parameter("reachable", reachable)
+	var offset = background.get_used_rect().position
+
+	var mouse_pos = to_global(get_local_mouse_position())
+	hover_shader.set_shader_parameter("canvas", canvas.get_texture())
 
 	if Input.is_action_just_released("select"):
 		if selected_entity and reachable:
