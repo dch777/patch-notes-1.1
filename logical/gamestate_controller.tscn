@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bdgnfve85idq6"]
 
-[ext_resource type="Script" uid="uid://cediej5wk110f" path="res://scripts/gamestate_controller.gd" id="1_5mblu"]
+[ext_resource type="Script" uid="uid://cediej5wk110f" path="res://scripts/gamestates/gamestate_controller.gd" id="1_5mblu"]
 
 [node name="GamestateController" type="Node2D"]
 script = ExtResource("1_5mblu")
