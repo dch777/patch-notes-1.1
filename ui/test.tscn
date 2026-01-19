@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://brl8026h7nfwm"]
+[gd_scene load_steps=14 format=4 uid="uid://brl8026h7nfwm"]
 
 [ext_resource type="PackedScene" uid="uid://bdgnfve85idq6" path="res://logical/gamestate_controller.tscn" id="1_wxwic"]
 [ext_resource type="Script" uid="uid://beja6hrajicve" path="res://scripts/gamestates/player_turn.gd" id="2_gxe3g"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bw4frxjqkj5l4" path="res://scripts/entities/player.gd" id="5_33hta"]
 [ext_resource type="Material" uid="uid://7pmbb2o7bved" path="res://assets/materials/select.tres" id="5_maoow"]
 [ext_resource type="Texture2D" uid="uid://by77g0ax424um" path="res://assets/sprites/tilemaps/isometric tileset/separated images/tile_053.png" id="6_hfe8r"]
+[ext_resource type="Texture2D" uid="uid://bmbk4744c0sk6" path="res://assets/sprites/tilemaps/voxelated/grass_1.png" id="6_qm0ky"]
 [ext_resource type="Script" uid="uid://ctcar4w7ik7x5" path="res://scripts/entities/enemy.gd" id="9_ren8u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3j6n7"]
@@ -372,11 +373,18 @@ texture_region_size = Vector2i(32, 32)
 10:10/0 = 0
 10:10/0/material = ExtResource("3_33hta")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_005re"]
+texture = ExtResource("6_qm0ky")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_33hta"]
 tile_shape = 1
 tile_layout = 4
 tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_3j6n7")
+sources/1 = SubResource("TileSetAtlasSource_005re")
 
 [node name="Test" type="Node2D"]
 z_index = 1
@@ -406,7 +414,6 @@ tile_set = SubResource("TileSet_33hta")
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAADAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD//wEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAAEAAQAAAAKAAQAAAD5/xEAAAAAAAIAAAD6/xEAAAAAAAIAAAD7/xEAAAAAAAIAAAD8/xEAAAAAAAIAAAD9/xEAAAAAAAIAAAD9/xIAAAAAAAIAAAD8/xIAAAAAAAIAAAD8/xMAAAAAAAIAAAD8/xQAAAAAAAIAAAD8/xUAAAAAAAIAAAD8/xYAAAAAAAIAAAD7/xYAAAAAAAIAAAD7/xIAAAAAAAIAAAD6/xIAAAAAAAIAAAD5/xIAAAAAAAIAAAD7/xMAAAAAAAIAAAD+/xMAAAAAAAIAAAD//xIAAAAAAAIAAAD+/xEAAAAAAAIAAAD//xEAAAAAAAIAAAD+/xIAAAAAAAIAAAA=")
 tile_set = SubResource("TileSet_33hta")
 
 [node name="Line2D" type="Line2D" parent="GamestateController"]
