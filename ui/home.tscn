@@ -1,0 +1,89 @@
+[gd_scene load_steps=6 format=3 uid="uid://g2r0a1iu6q57"]
+
+[ext_resource type="FontFile" uid="uid://b5lmwlm2beywa" path="res://assets/fonts/Ithaca-LVB75.ttf" id="1_gl1sf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0lqf3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_byw1o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oq2ox"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_17xci"]
+
+[node name="Home" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 72.0
+offset_top = 424.0
+offset_right = 112.0
+offset_bottom = 464.0
+
+[node name="Play" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_right = 42.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.5882353, 0.42352942, 0.42352942, 1)
+theme_override_colors/font_hover_color = Color(0.67058825, 0.5803922, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("1_gl1sf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0lqf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_byw1o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oq2ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17xci")
+text = "Play"
+alignment = 0
+
+[node name="Options" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 80.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(0.5882353, 0.42352942, 0.42352942, 1)
+theme_override_colors/font_hover_color = Color(0.67058825, 0.5803922, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("1_gl1sf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0lqf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_byw1o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oq2ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17xci")
+text = "Options"
+alignment = 0
+
+[node name="Credits" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 80.0
+offset_right = 80.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.5882353, 0.42352942, 0.42352942, 1)
+theme_override_colors/font_hover_color = Color(0.67058825, 0.5803922, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("1_gl1sf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0lqf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_byw1o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oq2ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17xci")
+text = "Credits"
+alignment = 0
+
+[node name="Quit" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_top = 120.0
+offset_right = 44.0
+offset_bottom = 148.0
+theme_override_colors/font_color = Color(0.5882353, 0.42352942, 0.42352942, 1)
+theme_override_colors/font_hover_color = Color(0.67058825, 0.5803922, 0.47843137, 1)
+theme_override_fonts/font = ExtResource("1_gl1sf")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0lqf3")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_byw1o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oq2ox")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_17xci")
+text = "Quit"
+alignment = 0
