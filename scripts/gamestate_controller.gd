@@ -51,7 +51,7 @@ func _process(delta: float):
 	var mouse_pos = to_global(get_local_mouse_position())
 	hover_shader.set_shader_parameter("canvas", canvas.get_texture())
 
-	if Input.is_action_just_released("select"):
+	if Input.is_action_just_pressed("select"):
 		if selected_entity and reachable:
 			selected_entity.map_clicked(hovered_cell)
 

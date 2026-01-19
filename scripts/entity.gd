@@ -27,7 +27,7 @@ func setup() -> void:
 	finished.connect(controller.entity_finished)
 
 	global_position = controller.map_to_global(map_position)
-	# map.set_point_solid(map_position)
+	map.set_point_solid(map_position)
 
 	sprite.material = select_shader.duplicate()
 
@@ -68,9 +68,9 @@ func map_clicked(map_pos: Vector2i) -> void:
 func move(dest: Vector2i) -> void:
 	var new_path = map.get_id_path(map_position, dest, true)
 	if new_path.size() > 1:
-		if path.size() > 0:
-			map.set_point_solid(path[-1], false)
 		path = new_path
+		map.set_point_solid(map_position, false)
+		map.set_point_solid(path[min(path.size() - 1, moves)])
 
 		if tween and tween.is_running():
 			tween.kill();
@@ -91,6 +91,17 @@ func move(dest: Vector2i) -> void:
 			);
 			prev_pos = pos
 		tween.tween_callback(move_finished)
+
+func teleport(dest: Vector2i) -> void:
+	map.set_point_solid(map_position, false)
+
+	var new_path = map.get_id_path(map_position, dest)
+	global_position = controller.map_to_global(dest)
+	map_position = dest
+	moves -= new_path.size() - 1
+
+	map.set_point_solid(dest)
+	move_finished()
 	
 func move_finished() -> void:
 	pass

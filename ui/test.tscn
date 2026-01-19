@@ -422,7 +422,7 @@ tile_set = SubResource("TileSet_33hta")
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAD///7/AAAEAAUAAAD/////AAAEAAUAAAD//wAAAAAEAAUAAAD//wEAAAAEAAUAAAA=")
+tile_map_data = PackedByteArray("AAD+////AAAEAAUAAAABAAIAAAAEAAUAAAAEAP7/AAAEAAUAAAABAP7/AAAEAAUAAAAEAPn/AAAEAAUAAAD+/wIAAAAEAAUAAAD///n/AAAEAAUAAAA=")
 tile_set = SubResource("TileSet_33hta")
 
 [node name="Line2D" type="Line2D" parent="GamestateController"]
@@ -453,7 +453,20 @@ sprite = NodePath(".")
 map_position = Vector2i(-5, -5)
 speed = 10.0
 
+[node name="enemy2" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
+z_index = 2
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("5_maoow")
+texture = ExtResource("6_hfe8r")
+offset = Vector2(0, -8)
+script = ExtResource("9_ren8u")
+sprite = NodePath(".")
+map_position = Vector2i(-5, -5)
+speed = 10.0
+
 [node name="TextureRect" type="TextureRect" parent="GamestateController"]
+visible = false
 z_index = 10
 offset_left = -500.0
 offset_top = -239.0
@@ -463,3 +476,4 @@ texture = SubResource("ViewportTexture_qm0ky")
 expand_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

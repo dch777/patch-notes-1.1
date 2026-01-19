@@ -28,9 +28,15 @@ func convert_vec(vec: Vector2):
 	return Vector2(canvas_viewport.size.x * vec.x / rect.size.x, canvas_viewport.size.y * vec.y / rect.size.y)
 
 func draw_reachable(remaining_moves: int, pos: Vector2i, color: Color):
+	draw_reachable_helper(remaining_moves - 1, pos + Vector2i(1 , 0), color)
+	draw_reachable_helper(remaining_moves - 1, pos + Vector2i(-1, 0), color)
+	draw_reachable_helper(remaining_moves - 1, pos + Vector2i(0 , 1), color)
+	draw_reachable_helper(remaining_moves - 1, pos + Vector2i(0 ,-1), color)
+
+func draw_reachable_helper(remaining_moves: int, pos: Vector2i, color: Color):
 	if !controller.map.is_point_solid(pos) and remaining_moves > 0:
 		draw_circle(convert_vec(pos), 25, color)
-		draw_reachable(remaining_moves - 1, pos + Vector2i(1 , 0), color)
-		draw_reachable(remaining_moves - 1, pos + Vector2i(-1, 0), color)
-		draw_reachable(remaining_moves - 1, pos + Vector2i(0 , 1), color)
-		draw_reachable(remaining_moves - 1, pos + Vector2i(0 ,-1), color)
+		draw_reachable_helper(remaining_moves - 1, pos + Vector2i(1 , 0), color)
+		draw_reachable_helper(remaining_moves - 1, pos + Vector2i(-1, 0), color)
+		draw_reachable_helper(remaining_moves - 1, pos + Vector2i(0 , 1), color)
+		draw_reachable_helper(remaining_moves - 1, pos + Vector2i(0 ,-1), color)

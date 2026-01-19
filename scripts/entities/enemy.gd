@@ -10,6 +10,11 @@ func start() -> void:
 func end() -> void:
 	active = false
 
+func map_clicked(map_pos: Vector2i) -> void:
+	controller.entity_deselected()
+	selected = false
+	deselect()
+
 func move_finished() -> void:
 	finished.emit(self)
 
