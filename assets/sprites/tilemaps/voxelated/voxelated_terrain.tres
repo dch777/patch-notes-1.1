@@ -1,14 +1,9 @@
 [gd_resource type="TileSet" load_steps=9 format=3 uid="uid://781fpbn2dlpn"]
 
-[ext_resource type="Texture2D" uid="uid://bmbk4744c0sk6" path="res://assets/sprites/tilemaps/voxelated/grass_1.png" id="1_xlqkq"]
 [ext_resource type="Texture2D" uid="uid://i2yvdwl2s1bf" path="res://assets/sprites/tilemaps/voxelated/building_1.png" id="2_fi47q"]
+[ext_resource type="Texture2D" uid="uid://cchfs74nmu5w1" path="res://assets/sprites/tilemaps/voxelated/road.png" id="2_ljas2"]
 [ext_resource type="Texture2D" uid="uid://r5lip4cwnenp" path="res://assets/sprites/tilemaps/voxelated/building_2.png" id="3_d58ru"]
 [ext_resource type="Texture2D" uid="uid://b3x6rnidfnpup" path="res://assets/sprites/tilemaps/voxelated/power_plant.png" id="4_vcgfi"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qpicy"]
-texture = ExtResource("1_xlqkq")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d58ru"]
 texture = ExtResource("2_fi47q")
@@ -16,6 +11,11 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/texture_origin = Vector2i(0, 8)
 0:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6jq4e"]
+texture = ExtResource("2_ljas2")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vcgfi"]
 texture = ExtResource("3_d58ru")
@@ -35,7 +35,7 @@ texture_region_size = Vector2i(32, 32)
 tile_shape = 1
 tile_layout = 4
 tile_size = Vector2i(32, 16)
-sources/0 = SubResource("TileSetAtlasSource_qpicy")
 sources/2 = SubResource("TileSetAtlasSource_d58ru")
 sources/4 = SubResource("TileSetAtlasSource_vcgfi")
 sources/6 = SubResource("TileSetAtlasSource_ljas2")
+sources/3 = SubResource("TileSetAtlasSource_6jq4e")

@@ -1,7 +1,6 @@
-[gd_scene load_steps=20 format=4 uid="uid://mco2qos1hl16"]
+[gd_scene load_steps=19 format=3 uid="uid://mco2qos1hl16"]
 
 [ext_resource type="Script" uid="uid://dd0f8168hiknl" path="res://scripts/render.gd" id="1_546lt"]
-[ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="2_276te"]
 [ext_resource type="FontFile" uid="uid://b615n16ixdysn" path="res://assets/fonts/visitor2.ttf" id="2_546lt"]
 [ext_resource type="Texture2D" uid="uid://ca1yf1h11i3l2" path="res://assets/ui/skip_turn_1.png" id="3_7ihmi"]
 [ext_resource type="Texture2D" uid="uid://bf2qwovgp5utt" path="res://assets/ui/skip_turn_2.png" id="4_en2x2"]
@@ -103,20 +102,6 @@ script = ExtResource("1_546lt")
 position = Vector2(0, 48)
 color = Color(0, 0, 0, 0.6)
 polygon = PackedVector2Array(576, 112, 192, 304, 576, 496, 960, 304)
-
-[node name="TestBoard_DELETE" type="TileMapLayer" parent="."]
-z_as_relative = false
-y_sort_enabled = true
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD8/wgAAAAAAAAAAAD8/wkAAAAAAAAAAAD8/woAAAAAAAAAAAD8/wsAAAAAAAAAAAD8/wwAAAAAAAAAAAD8/w0AAAAAAAAAAAD8/w4AAAAAAAAAAAD8/w8AAAAAAAAAAAD9/wgAAAAAAAAAAAD9/wkAAAAAAAAAAAD9/woAAAAAAAAAAAD9/wsAAAAAAAAAAAD9/wwAAAAAAAAAAAD9/w0AAAAAAAAAAAD9/w4AAAAAAAAAAAD9/w8AAAAAAAAAAAD+/wgAAAAAAAAAAAD+/wkAAAAAAAAAAAD+/woAAAAAAAAAAAD+/wsAAAAAAAAAAAD+/wwAAAAAAAAAAAD+/w0AAAAAAAAAAAD+/w4AAAAAAAAAAAD+/w8AAAAAAAAAAAD//wgAAAAAAAAAAAD//wkAAAAAAAAAAAD//woAAAAAAAAAAAD//wsAAAAAAAAAAAD//wwAAAAAAAAAAAD//w0AAAAAAAAAAAD//w4AAAAAAAAAAAD//w8AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA8AAAAAAAAAAAABAAgAAAAAAAAAAAABAAkAAAAAAAAAAAABAAoAAAAAAAAAAAABAAsAAAAAAAAAAAABAAwAAAAAAAAAAAABAA0AAAAAAAAAAAABAA4AAAAAAAAAAAABAA8AAAAAAAAAAAACAAgAAAAAAAAAAAACAAkAAAAAAAAAAAACAAoAAAAAAAAAAAACAAsAAAAAAAAAAAACAAwAAAAAAAAAAAACAA0AAAAAAAAAAAACAA4AAAAAAAAAAAACAA8AAAAAAAAAAAADAAgAAAAAAAAAAAADAAkAAAAAAAAAAAADAAoAAAAAAAAAAAADAAsAAAAAAAAAAAADAAwAAAAAAAAAAAADAA0AAAAAAAAAAAADAA4AAAAAAAAAAAADAA8AAAAAAAAAAAA=")
-tile_set = ExtResource("2_276te")
-
-[node name="TestBuildings_DELETE" type="TileMapLayer" parent="."]
-z_as_relative = false
-y_sort_enabled = true
-scale = Vector2(3, 3)
-tile_map_data = PackedByteArray("AAD+/wkABgAAAAAAAAD+/wsABgAAAAAAAAD+/w0ABgAAAAAAAAAAAAkABAAAAAAAAAAAAAsABAAAAAAAAAAAAA0ABAAAAAAAAAACAAkAAgAAAAAAAAACAAsAAgAAAAAAAAACAA0AAgAAAAAAAAA=")
-tile_set = ExtResource("2_276te")
 
 [node name="SkipTurn" type="TextureButton" parent="."]
 layout_mode = 0

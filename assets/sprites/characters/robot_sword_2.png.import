@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf6musgsn0fjm"
-path="res://.godot/imported/robot_1_3.png-c62a9f3d473c55044cc944ec4ecd28b0.ctex"
+uid="uid://bujwkpfme0evt"
+path="res://.godot/imported/robot_sword_2.png-e9ce34992a163a399b2271361d9b9c75.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/robot_1_3.png"
-dest_files=["res://.godot/imported/robot_1_3.png-c62a9f3d473c55044cc944ec4ecd28b0.ctex"]
+source_file="res://assets/sprites/characters/robot_sword_2.png"
+dest_files=["res://.godot/imported/robot_sword_2.png-e9ce34992a163a399b2271361d9b9c75.ctex"]
 
 [params]
 

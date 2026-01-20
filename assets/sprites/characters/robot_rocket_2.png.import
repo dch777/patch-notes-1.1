@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmbk4744c0sk6"
-path="res://.godot/imported/grass_1.png-40f9437d45673453a482603650b06eb0.ctex"
+uid="uid://budvtkqitthdt"
+path="res://.godot/imported/robot_rocket_2.png-4cc9dea22e184166f7b5027d1bfb042e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilemaps/voxelated/grass_1.png"
-dest_files=["res://.godot/imported/grass_1.png-40f9437d45673453a482603650b06eb0.ctex"]
+source_file="res://assets/sprites/characters/robot_rocket_2.png"
+dest_files=["res://.godot/imported/robot_rocket_2.png-4cc9dea22e184166f7b5027d1bfb042e.ctex"]
 
 [params]
 
