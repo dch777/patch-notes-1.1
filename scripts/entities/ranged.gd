@@ -20,15 +20,15 @@ func heuristic(pos: Vector2i) -> float:
 		if (player.map_position.x == pos.x or player.map_position.y == pos.y) and d - 1 == (player.map_position - pos).length() and !attackable:
 			h += 10
 			attackable = true
-		if (player.map_position - pos).length() <= 3:
-			h -= 5 * (3 - (player.map_position - pos).length())
+		if (player.map_position - pos).length() <= 5:
+			h -= 4 * (5 - (player.map_position - pos).length())
 		if controller.canvas.attacked.has(pos):
 			h -= 40
 		map.set_point_solid(player.map_position)
 	for enemy in enemies:
 		if enemy is Ranged:
 			if (enemy.map_position.x == pos.x or enemy.map_position.y == pos.y):
-				h -= 5
+				h -= 7
 	return h
 
 func set_attack() -> void:
