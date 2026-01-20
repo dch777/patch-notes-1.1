@@ -51,7 +51,7 @@ func _process(delta: float):
 	var mouse_pos = to_global(get_local_mouse_position())
 	hover_shader.set_shader_parameter("canvas", canvas.get_texture())
 
-	if Input.is_action_just_pressed("select"):
+	if Input.is_action_just_released("select"):
 		if selected_entity and reachable:
 			selected_entity.map_clicked(hovered_cell)
 
@@ -64,6 +64,10 @@ func change_state(next_state: Gamestate):
 
 func entity_finished(entity: Entity):
 	current_state.entity_finished(entity)
+
+func execute_action(action: Action):
+	action.execute()
+	current_state.handle_action(action)
 
 func entity_selected(entity: Entity):
 	entity_deselected()

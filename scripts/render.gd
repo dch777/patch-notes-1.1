@@ -1,5 +1,7 @@
 extends Control
 
+signal next_turn()
+
 @onready var viewport := $SubViewport
 
 func _ready() -> void:
@@ -12,3 +14,6 @@ func polygon_to_png():
 	var image: Image = viewport.get_texture().get_image()
 
 	image.save_png("res://reticle_2.png")
+
+func next_button_pressed():
+	next_turn.emit()

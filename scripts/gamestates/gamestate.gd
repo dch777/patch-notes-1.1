@@ -25,3 +25,6 @@ func cleanup() -> void:
 
 func entity_finished(entity: Entity) -> void:
 	pass
+
+func handle_action(action: Action) -> void:
+	pass
