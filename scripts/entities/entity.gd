@@ -17,9 +17,11 @@ var tween: Tween
 
 @export_group("Gameplay")
 var moves: int = 0
+enum Direction { EAST, WEST, SOUTH, NORTH }
 @onready var health = max_health
 
 @export var map_position: Vector2i
+@export var facing: Direction
 @export var speed: float = 2.0
 @export var max_health: int = 5
 
@@ -52,7 +54,6 @@ func _input(event: InputEvent) -> void:
 			controller.entity_selected(self)
 			selected = true
 			select()
-			print(health)
 		else:
 			controller.entity_deselected()
 			selected = false
@@ -97,13 +98,14 @@ func move(dest: Vector2i) -> void:
 	else:
 		move_finished()
 
-func teleport(dest: Vector2i) -> void:
+func teleport(dest: Vector2i, voluntary: bool = true) -> void:
 	map.set_point_solid(map_position, false)
 
 	var new_path = map.get_id_path(map_position, dest)
 	global_position = controller.map_to_global(dest)
 	map_position = dest
-	moves -= new_path.size() - 1
+	if voluntary:
+		moves -= new_path.size() - 1
 
 	map.set_point_solid(dest)
 	
@@ -115,3 +117,7 @@ func draw(canvas: Canvas) -> void:
 
 func draw_selected(canvas: Canvas) -> void:
 	pass
+
+func facing_vector() -> Vector2i:
+	var option = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
+	return option[facing]

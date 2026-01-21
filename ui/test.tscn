@@ -86,6 +86,7 @@ sprite = NodePath(".")
 z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("5_maoow")
+position = Vector2(0, 1)
 texture = ExtResource("8_005re")
 offset = Vector2(0, -8)
 script = ExtResource("5_33hta")
@@ -136,3 +137,4 @@ texture = SubResource("ViewportTexture_qm0ky")
 expand_mode = 1
 
 [connection signal="next_turn" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="undo_action"]
+[connection signal="shoot" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="fire"]

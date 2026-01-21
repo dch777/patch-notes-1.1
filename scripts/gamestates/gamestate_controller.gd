@@ -57,7 +57,7 @@ func _process(delta: float):
 
 func change_state(next_state: Gamestate):
 	if current_state != null:
-		# entity_deselected()
+		entity_deselected()
 		current_state.cleanup()
 	current_state = next_state
 	current_state.enter()
