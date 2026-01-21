@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ipm2nrua0ks3"
-path="res://.godot/imported/next_left_2.png-fefe4181a41006599197c6a200d57575.ctex"
+uid="uid://dn4chgw2njqt8"
+path="res://.godot/imported/next_turn_alt_1.png-1275d56ed53f22d659f8abf979d10fcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/next_left_2.png"
-dest_files=["res://.godot/imported/next_left_2.png-fefe4181a41006599197c6a200d57575.ctex"]
+source_file="res://assets/ui/next_turn_alt_1.png"
+dest_files=["res://.godot/imported/next_turn_alt_1.png-1275d56ed53f22d659f8abf979d10fcc.ctex"]
 
 [params]
 

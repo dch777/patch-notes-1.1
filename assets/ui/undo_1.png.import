@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rsxl8urnojfr"
-path="res://.godot/imported/road.png-fa5638d23498224beb73fbfce63ab4da.ctex"
+uid="uid://bmenx0kvdxf7x"
+path="res://.godot/imported/undo_1.png-34d8abbceea0809e526da34bd30abeb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilemaps/voxelated/road.png"
-dest_files=["res://.godot/imported/road.png-fa5638d23498224beb73fbfce63ab4da.ctex"]
+source_file="res://assets/ui/undo_1.png"
+dest_files=["res://.godot/imported/undo_1.png-34d8abbceea0809e526da34bd30abeb9.ctex"]
 
 [params]
 
