@@ -2,20 +2,22 @@
 
 [ext_resource type="Script" uid="uid://dd0f8168hiknl" path="res://scripts/render.gd" id="1_546lt"]
 [ext_resource type="FontFile" uid="uid://b615n16ixdysn" path="res://assets/fonts/visitor2.ttf" id="2_546lt"]
-[ext_resource type="Texture2D" uid="uid://ca1yf1h11i3l2" path="res://assets/ui/skip_turn_1.png" id="3_7ihmi"]
-[ext_resource type="Texture2D" uid="uid://bf2qwovgp5utt" path="res://assets/ui/skip_turn_2.png" id="4_en2x2"]
+[ext_resource type="Texture2D" uid="uid://dbdb21e0onbge" path="res://assets/ui/undo_alt_1.png" id="4_so1yu"]
+[ext_resource type="Texture2D" uid="uid://cvl64x24gckh5" path="res://assets/ui/undo_alt_2.png" id="5_65xic"]
 [ext_resource type="FontFile" uid="uid://bkbm8njat4vnb" path="res://assets/fonts/visitor1.ttf" id="6_1v5rv"]
 [ext_resource type="Texture2D" uid="uid://b1us0rp7qgsew" path="res://assets/ui/checkbox_1.png" id="7_srpbi"]
 [ext_resource type="Texture2D" uid="uid://d2kh0vy4g5omp" path="res://assets/ui/checkbox_2.png" id="8_spcu4"]
-[ext_resource type="Texture2D" uid="uid://ce18jbmq4nmj4" path="res://assets/ui/next_left_1.png" id="9_m0eg6"]
+[ext_resource type="Texture2D" uid="uid://dsrhxrq4f1fl8" path="res://assets/ui/next_skill_1.png" id="9_m0eg6"]
 [ext_resource type="Shader" uid="uid://dxfmcw76s7pjl" path="res://assets/shaders/crt.gdshader" id="9_spcu4"]
-[ext_resource type="Texture2D" uid="uid://ipm2nrua0ks3" path="res://assets/ui/next_left_2.png" id="10_b00kl"]
-[ext_resource type="Texture2D" uid="uid://byi3d0njdr8uf" path="res://assets/ui/next_right_1.png" id="11_so1yu"]
-[ext_resource type="Texture2D" uid="uid://c5qlivmjufywj" path="res://assets/ui/next_right_2.png" id="12_65xic"]
-[ext_resource type="Texture2D" uid="uid://bguu70bdmp1ty" path="res://assets/ui/reticle_1.png" id="14_65xic"]
-[ext_resource type="Texture2D" uid="uid://ciyp13da22a2w" path="res://assets/ui/reticle_2.png" id="14_mp5xd"]
+[ext_resource type="Texture2D" uid="uid://dvaq0iv8skt7c" path="res://assets/ui/next_skill_2.png" id="10_b00kl"]
+[ext_resource type="Texture2D" uid="uid://dn4chgw2njqt8" path="res://assets/ui/next_turn_alt_1.png" id="10_so1yu"]
+[ext_resource type="Texture2D" uid="uid://dhj67hc1nayxm" path="res://assets/ui/next_turn_alt_2.png" id="11_65xic"]
+[ext_resource type="Texture2D" uid="uid://cwpdiotmtuqbr" path="res://assets/ui/reticle_1.png" id="14_65xic"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srpbi"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_spcu4"]
+load_path = "res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_spcu4"]
 shader = ExtResource("9_spcu4")
@@ -71,7 +73,7 @@ shader_parameter/overlay = true
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
 shader_parameter/grille_opacity = 0.3
-shader_parameter/resolution = Vector2(0, 30)
+shader_parameter/resolution = Vector2(0, 26)
 shader_parameter/pixelate = false
 shader_parameter/roll = true
 shader_parameter/roll_speed = 2.0
@@ -98,47 +100,60 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_546lt")
 
-[node name="SkipTurn" type="TextureButton" parent="."]
+[node name="DashBgShadow1" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.32941177)
+polygon = PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0, 264, 0, 264, 56, 280, 40, 880, 40, 896, 56, 896, 112, 1096, 112, 1112, 128, 1112, 416, 1096, 432, 880, 432, 880, 592, 864, 608, 456, 608, 456, 560, 392, 544, 392, 488, 56, 488, 40, 472, 40, 126, 56, 110, 264, 110, 264, 0)
+
+[node name="DashBgShadow2" type="Polygon2D" parent="."]
+color = Color(0, 0, 0, 0.32941177)
+polygon = PackedVector2Array(0, 0, 0, 648, 1152, 648, 1152, 0, 256, 0, 256, 56, 280, 32, 880, 32, 904, 56, 904, 104, 1096, 104, 1120, 128, 1120, 416, 1096, 440, 888, 440, 888, 592, 864, 616, 448, 616, 448, 568, 384, 552, 384, 496, 56, 496, 32, 472, 32, 126, 56, 102, 256, 102, 256, 0)
+
+[node name="DashBG" type="Polygon2D" parent="."]
+color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+polygon = PackedVector2Array(0, 0, 248, 0, 248, 94, 56, 94, 24, 126, 24, 472, 56, 504, 376, 504, 376, 560, 440, 576, 440, 624, 864, 624, 896, 592, 896, 448, 1096, 448, 1128, 416, 1128, 128, 1096, 96, 912, 96, 912, 56, 880, 24, 280, 24, 248, 56, 248, 0, 1152, 0, 1152, 648, 0, 648)
+
+[node name="NextBtn" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 15.0
 offset_top = 16.0
-offset_right = 243.0
-offset_bottom = 99.0
-texture_normal = ExtResource("3_7ihmi")
-texture_pressed = ExtResource("4_en2x2")
-texture_disabled = ExtResource("4_en2x2")
+offset_right = 153.0
+offset_bottom = 79.0
+texture_normal = ExtResource("10_so1yu")
+texture_pressed = ExtResource("11_65xic")
+texture_disabled = ExtResource("11_65xic")
+
+[node name="UndoBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 168.0
+offset_top = 16.0
+offset_right = 231.0
+offset_bottom = 79.0
+texture_normal = ExtResource("4_so1yu")
+texture_pressed = ExtResource("5_65xic")
+texture_disabled = ExtResource("5_65xic")
 
 [node name="TurnCounter" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(206, 62)
-layout_mode = 0
-offset_left = 930.0
-offset_top = 20.0
-offset_right = 1136.0
-offset_bottom = 82.0
-color = Color(0, 0, 0, 0.6)
-
-[node name="ColorRect" type="ColorRect" parent="TurnCounter"]
 material = SubResource("ShaderMaterial_srpbi")
 layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 203.0
-offset_bottom = 59.0
-color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+offset_left = 928.0
+offset_top = 16.0
+offset_right = 1136.0
+offset_bottom = 80.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
 
-[node name="ColorRect" type="ColorRect" parent="TurnCounter/ColorRect"]
+[node name="ColorRect" type="ColorRect" parent="TurnCounter"]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 203.0
-offset_bottom = 59.0
+offset_right = 205.0
+offset_bottom = 60.0
 color = Color(0.30588236, 0.34509805, 0.2901961, 1)
 
-[node name="Label" type="Label" parent="TurnCounter/ColorRect/ColorRect"]
+[node name="Label" type="Label" parent="TurnCounter/ColorRect"]
 layout_mode = 0
-offset_left = 19.0
-offset_right = 90.0
-offset_bottom = 56.0
+offset_left = 20.0
+offset_right = 91.0
+offset_bottom = 57.0
 theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
 theme_override_fonts/font = ExtResource("2_546lt")
 theme_override_font_sizes/font_size = 38
@@ -146,11 +161,11 @@ text = "Turn"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Number" type="Label" parent="TurnCounter/ColorRect/ColorRect"]
+[node name="Number" type="Label" parent="TurnCounter/ColorRect"]
 layout_mode = 0
-offset_left = 96.0
-offset_right = 182.0
-offset_bottom = 56.0
+offset_left = 97.0
+offset_right = 183.0
+offset_bottom = 57.0
 theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
 theme_override_fonts/font = ExtResource("6_1v5rv")
 theme_override_font_sizes/font_size = 48
@@ -160,34 +175,26 @@ vertical_alignment = 1
 
 [node name="BonusMissions" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 927.0
-offset_top = 95.0
-offset_right = 1140.0
-offset_bottom = 258.0
-color = Color(0, 0, 0, 0.6)
+offset_left = 912.0
+offset_top = 464.0
+offset_right = 1136.0
+offset_bottom = 632.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
 
 [node name="ColorRect" type="ColorRect" parent="BonusMissions"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 210.0
-offset_bottom = 160.0
-color = Color(0.27058825, 0.26666668, 0.30980393, 1)
-
-[node name="ColorRect" type="ColorRect" parent="BonusMissions/ColorRect"]
-layout_mode = 0
 offset_left = 3.0
 offset_top = 3.0
-offset_right = 209.0
-offset_bottom = 160.0
+offset_right = 221.0
+offset_bottom = 165.0
 color = Color(0.30588236, 0.34509805, 0.2901961, 1)
 
-[node name="Label" type="Label" parent="BonusMissions/ColorRect/ColorRect"]
+[node name="Label" type="Label" parent="BonusMissions/ColorRect"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 14.0
-offset_right = 174.0
-offset_bottom = 40.0
+offset_left = 38.0
+offset_top = 13.0
+offset_right = 184.0
+offset_bottom = 39.0
 theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
 theme_override_fonts/font = ExtResource("2_546lt")
 theme_override_font_sizes/font_size = 24
@@ -195,14 +202,14 @@ text = "Bonus Missions:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MissionBullet" type="Control" parent="BonusMissions/ColorRect/ColorRect"]
+[node name="MissionBullet" type="Control" parent="BonusMissions/ColorRect"]
 anchors_preset = 0
-offset_left = 7.0
-offset_top = 49.0
-offset_right = 199.0
-offset_bottom = 72.0
+offset_left = 13.0
+offset_top = 48.0
+offset_right = 205.0
+offset_bottom = 71.0
 
-[node name="Label" type="Label" parent="BonusMissions/ColorRect/ColorRect/MissionBullet"]
+[node name="Label" type="Label" parent="BonusMissions/ColorRect/MissionBullet"]
 layout_mode = 0
 offset_left = 25.0
 offset_right = 192.0
@@ -214,23 +221,23 @@ text = "Win within 20 turns"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet"]
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet"]
 position = Vector2(11.5, 11.5)
 texture = ExtResource("7_srpbi")
 
-[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet"]
+[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet"]
 visible = false
 position = Vector2(11.5, 11.5)
 texture = ExtResource("8_spcu4")
 
-[node name="MissionBullet2" type="Control" parent="BonusMissions/ColorRect/ColorRect"]
+[node name="MissionBullet2" type="Control" parent="BonusMissions/ColorRect"]
 anchors_preset = 0
-offset_left = 7.0
-offset_top = 82.0
-offset_right = 199.0
-offset_bottom = 105.0
+offset_left = 13.0
+offset_top = 81.0
+offset_right = 205.0
+offset_bottom = 104.0
 
-[node name="Label" type="Label" parent="BonusMissions/ColorRect/ColorRect/MissionBullet2"]
+[node name="Label" type="Label" parent="BonusMissions/ColorRect/MissionBullet2"]
 layout_mode = 0
 offset_left = 25.0
 offset_right = 192.0
@@ -242,23 +249,23 @@ text = "Win within 20 turns"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet2"]
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet2"]
 position = Vector2(11.5, 11.5)
 texture = ExtResource("7_srpbi")
 
-[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet2"]
+[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet2"]
 visible = false
 position = Vector2(11.5, 11.5)
 texture = ExtResource("8_spcu4")
 
-[node name="MissionBullet3" type="Control" parent="BonusMissions/ColorRect/ColorRect"]
+[node name="MissionBullet3" type="Control" parent="BonusMissions/ColorRect"]
 anchors_preset = 0
-offset_left = 7.0
-offset_top = 115.0
-offset_right = 199.0
-offset_bottom = 138.0
+offset_left = 13.0
+offset_top = 114.0
+offset_right = 205.0
+offset_bottom = 137.0
 
-[node name="Label" type="Label" parent="BonusMissions/ColorRect/ColorRect/MissionBullet3"]
+[node name="Label" type="Label" parent="BonusMissions/ColorRect/MissionBullet3"]
 layout_mode = 0
 offset_left = 25.0
 offset_right = 192.0
@@ -270,73 +277,24 @@ text = "Win within 20 turns"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet3"]
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet3"]
 position = Vector2(11.5, 11.5)
 texture = ExtResource("7_srpbi")
 
-[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/ColorRect/MissionBullet3"]
+[node name="Complete" type="Sprite2D" parent="BonusMissions/ColorRect/MissionBullet3"]
 visible = false
 position = Vector2(11.5, 11.5)
 texture = ExtResource("8_spcu4")
 
-[node name="Stats" type="Control" parent="."]
-anchors_preset = 0
-offset_left = 2.0
-offset_top = 506.0
-offset_right = 418.0
-offset_bottom = 650.0
-
-[node name="Polygon2D" type="Polygon2D" parent="Stats"]
-color = Color(0, 0, 0, 0.6)
-polygon = PackedVector2Array(-2, 0, 384, 0, 384, 56, 440, 72, 440, 144, -2, 144)
-
-[node name="Polygon2D2" type="Polygon2D" parent="Stats"]
-position = Vector2(-2, -2)
-color = Color(0.27058825, 0.26666668, 0.30980393, 1)
-polygon = PackedVector2Array(0, 0, 384, 0, 384, 56, 440, 72, 440, 144, 0, 144)
-
-[node name="SkillIcon" type="ColorRect" parent="Stats/Polygon2D2"]
-offset_left = 216.0
-offset_top = 16.0
-offset_right = 328.0
-offset_bottom = 128.0
-color = Color(0.39215687, 0.3882353, 0.39607844, 1)
-
-[node name="LeftBtn" type="TextureButton" parent="Stats/Polygon2D2"]
-offset_left = 184.0
-offset_top = 13.0
-offset_right = 214.0
-offset_bottom = 131.0
-texture_normal = ExtResource("9_m0eg6")
-texture_pressed = ExtResource("10_b00kl")
-texture_disabled = ExtResource("10_b00kl")
-
-[node name="RightBtn" type="TextureButton" parent="Stats/Polygon2D2"]
-offset_left = 330.0
-offset_top = 13.0
-offset_right = 360.0
-offset_bottom = 131.0
-texture_normal = ExtResource("11_so1yu")
-texture_pressed = ExtResource("12_65xic")
-texture_disabled = ExtResource("12_65xic")
-
-[node name="ReticleBtn" type="TextureButton" parent="Stats/Polygon2D2"]
-offset_left = 376.0
-offset_top = 80.0
-offset_right = 430.0
-offset_bottom = 134.0
-texture_normal = ExtResource("14_65xic")
-texture_pressed = ExtResource("14_mp5xd")
-texture_disabled = ExtResource("14_mp5xd")
-
-[node name="PlayerIcon" type="ColorRect" parent="Stats/Polygon2D2"]
+[node name="PlayerIcon" type="ColorRect" parent="."]
+layout_mode = 0
 offset_left = 8.0
-offset_top = 8.0
+offset_top = 512.0
 offset_right = 168.0
-offset_bottom = 136.0
+offset_bottom = 640.0
 color = Color(0.39215687, 0.3882353, 0.39607844, 1)
 
-[node name="Active" type="ColorRect" parent="Stats/Polygon2D2/PlayerIcon"]
+[node name="Active" type="ColorRect" parent="PlayerIcon"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -344,19 +302,19 @@ offset_right = 156.0
 offset_bottom = 124.0
 color = Color(0.30588236, 0.34509805, 0.2901961, 1)
 
-[node name="FluxLabel" type="Label" parent="Stats/Polygon2D2/PlayerIcon/Active"]
+[node name="FluxLabel" type="Label" parent="PlayerIcon/Active"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 18.0
-offset_right = 54.0
-offset_bottom = 39.0
+offset_left = 3.0
+offset_top = 21.0
+offset_right = 60.0
+offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("2_546lt")
 theme_override_font_sizes/font_size = 28
 text = "Flux:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Stats/Polygon2D2/PlayerIcon/Active/FluxLabel"]
+[node name="Label" type="Label" parent="PlayerIcon/Active/FluxLabel"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 0
 offset_left = 70.0
@@ -367,18 +325,19 @@ theme_override_font_sizes/font_size = 28
 text = "99"
 horizontal_alignment = 2
 
-[node name="ArmorLabel" type="Label" parent="Stats/Polygon2D2/PlayerIcon/Active"]
+[node name="ArmorLabel" type="Label" parent="PlayerIcon/Active"]
 layout_mode = 0
-offset_left = 2.0
-offset_right = 67.0
-offset_bottom = 21.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 73.0
+offset_bottom = 24.0
 theme_override_fonts/font = ExtResource("2_546lt")
 theme_override_font_sizes/font_size = 28
 text = "Armor:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="Stats/Polygon2D2/PlayerIcon/Active/ArmorLabel"]
+[node name="Label" type="Label" parent="PlayerIcon/Active/ArmorLabel"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 0
 offset_left = 70.0
@@ -389,14 +348,7 @@ theme_override_font_sizes/font_size = 28
 text = "99"
 horizontal_alignment = 2
 
-[node name="Sprite" type="ColorRect" parent="Stats/Polygon2D2/PlayerIcon"]
-layout_mode = 0
-offset_left = 64.0
-offset_top = 64.0
-offset_right = 96.0
-offset_bottom = 96.0
-
-[node name="Deactive" type="ColorRect" parent="Stats/Polygon2D2/PlayerIcon"]
+[node name="Deactive" type="ColorRect" parent="PlayerIcon"]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -405,26 +357,65 @@ offset_right = 156.0
 offset_bottom = 124.0
 color = Color(0, 0, 0, 1)
 
+[node name="SkillIcon" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 520.0
+offset_right = 328.0
+offset_bottom = 632.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[node name="NextLeftBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 519.0
+offset_right = 211.0
+offset_bottom = 633.0
+texture_normal = ExtResource("9_m0eg6")
+texture_pressed = ExtResource("10_b00kl")
+texture_disabled = ExtResource("10_b00kl")
+
+[node name="NextRightBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 363.0
+offset_top = 519.0
+offset_right = 393.0
+offset_bottom = 633.0
+scale = Vector2(-1, 1)
+texture_normal = ExtResource("9_m0eg6")
+texture_pressed = ExtResource("10_b00kl")
+texture_disabled = ExtResource("10_b00kl")
+
+[node name="FireBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 583.0
+offset_right = 426.0
+offset_bottom = 633.0
+texture_normal = ExtResource("14_65xic")
+texture_pressed = SubResource("CompressedTexture2D_spcu4")
+texture_disabled = SubResource("CompressedTexture2D_spcu4")
+
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(54, 54)
+size = Vector2i(63, 63)
 render_target_update_mode = 4
 
 [node name="Shaders" type="CanvasLayer" parent="."]
 
 [node name="TurnCounterCRT" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_spcu4")
-offset_left = 930.0
-offset_top = 20.0
-offset_right = 1130.0
+offset_left = 931.0
+offset_top = 19.0
+offset_right = 1133.0
 offset_bottom = 76.0
 
 [node name="BonusMIssionCRT" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_ff8ar")
-offset_left = 927.0
-offset_top = 95.0
+offset_left = 915.0
+offset_top = 467.0
 offset_right = 1133.0
-offset_bottom = 252.0
+offset_bottom = 629.0
 
 [node name="PlayerIconCRT" type="ColorRect" parent="Shaders"]
 material = SubResource("ShaderMaterial_mp5xd")
@@ -432,8 +423,3 @@ offset_left = 12.0
 offset_top = 516.0
 offset_right = 164.0
 offset_bottom = 636.0
-
-[connection signal="button_up" from="SkipTurn" to="." method="next_button_pressed"]
-[connection signal="button_up" from="Stats/Polygon2D2/LeftBtn" to="." method="left_button_pressed"]
-[connection signal="button_up" from="Stats/Polygon2D2/RightBtn" to="." method="right_button_pressed"]
-[connection signal="button_up" from="Stats/Polygon2D2/ReticleBtn" to="." method="shoot_button_pressed"]

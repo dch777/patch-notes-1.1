@@ -1,0 +1,278 @@
+[gd_scene load_steps=7 format=4 uid="uid://c4aepswlna0gk"]
+
+[ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="1_78u8q"]
+[ext_resource type="FontFile" uid="uid://b615n16ixdysn" path="res://assets/fonts/visitor2.ttf" id="2_atbo8"]
+[ext_resource type="FontFile" uid="uid://bkbm8njat4vnb" path="res://assets/fonts/visitor1.ttf" id="3_4hb45"]
+[ext_resource type="Texture2D" uid="uid://b1us0rp7qgsew" path="res://assets/ui/checkbox_1.png" id="4_3odff"]
+[ext_resource type="Texture2D" uid="uid://d2kh0vy4g5omp" path="res://assets/ui/checkbox_2.png" id="5_gl61q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jl0ct"]
+
+[node name="NewHud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DashBg" type="Polygon2D" parent="."]
+color = Color(1, 0, 1, 1)
+polygon = PackedVector2Array(0, 0, 0, 648, 296, 648, 296, 0)
+
+[node name="DashBg2" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(896, 0, 896, 192, 1152, 192, 1152, 0)
+
+[node name="Shadow" type="Polygon2D" parent="."]
+position = Vector2(720, 440)
+color = Color(0, 0, 0, 0.6)
+offset = Vector2(-576, -320)
+polygon = PackedVector2Array(576, 112, 192, 304, 576, 496, 960, 304)
+
+[node name="Board" type="TileMapLayer" parent="Shadow"]
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, -40)
+scale = Vector2(3, 3)
+tile_map_data = PackedByteArray("AAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAP7/AAAAAAAAAAAEAP//AAAAAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAEAAIAAAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAADAAAAAAAAAAAAAAADAAEAAAAAAAAAAAADAAIAAAAAAAAAAAA=")
+tile_set = ExtResource("1_78u8q")
+
+[node name="TurnCounter" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jl0ct")
+layout_mode = 0
+offset_left = 16.0
+offset_top = 19.0
+offset_right = 222.0
+offset_bottom = 124.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[node name="ColorRect" type="ColorRect" parent="TurnCounter"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 203.0
+offset_bottom = 59.0
+color = Color(0.30588236, 0.34509805, 0.2901961, 1)
+
+[node name="Label" type="Label" parent="TurnCounter/ColorRect"]
+layout_mode = 0
+offset_left = 19.0
+offset_right = 90.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 38
+text = "Turn"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Number" type="Label" parent="TurnCounter/ColorRect"]
+layout_mode = 0
+offset_left = 96.0
+offset_right = 182.0
+offset_bottom = 56.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("3_4hb45")
+theme_override_font_sizes/font_size = 48
+text = "999"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BonusMissions2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 16.0
+offset_right = 1132.0
+offset_bottom = 179.0
+color = Color(0.27058825, 0.26666668, 0.30980393, 1)
+
+[node name="ColorRect" type="ColorRect" parent="BonusMissions2"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 209.0
+offset_bottom = 160.0
+color = Color(0.30588236, 0.34509805, 0.2901961, 1)
+
+[node name="Label" type="Label" parent="BonusMissions2/ColorRect"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 14.0
+offset_right = 174.0
+offset_bottom = 40.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 24
+text = "Bonus Missions:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MissionBullet" type="Control" parent="BonusMissions2/ColorRect"]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 49.0
+offset_right = 199.0
+offset_bottom = 72.0
+
+[node name="Label" type="Label" parent="BonusMissions2/ColorRect/MissionBullet"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 192.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 20
+text = "Win within 20 turns"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet"]
+position = Vector2(11.5, 11.5)
+texture = ExtResource("4_3odff")
+
+[node name="Complete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet"]
+visible = false
+position = Vector2(11.5, 11.5)
+texture = ExtResource("5_gl61q")
+
+[node name="MissionBullet2" type="Control" parent="BonusMissions2/ColorRect"]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 82.0
+offset_right = 199.0
+offset_bottom = 105.0
+
+[node name="Label" type="Label" parent="BonusMissions2/ColorRect/MissionBullet2"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 192.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 20
+text = "Win within 20 turns"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet2"]
+position = Vector2(11.5, 11.5)
+texture = ExtResource("4_3odff")
+
+[node name="Complete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet2"]
+visible = false
+position = Vector2(11.5, 11.5)
+texture = ExtResource("5_gl61q")
+
+[node name="MissionBullet3" type="Control" parent="BonusMissions2/ColorRect"]
+anchors_preset = 0
+offset_left = 7.0
+offset_top = 115.0
+offset_right = 199.0
+offset_bottom = 138.0
+
+[node name="Label" type="Label" parent="BonusMissions2/ColorRect/MissionBullet3"]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 192.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0.9490196, 0.9411765, 0.8980392, 1)
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 20
+text = "Win within 20 turns"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Incomplete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet3"]
+position = Vector2(11.5, 11.5)
+texture = ExtResource("4_3odff")
+
+[node name="Complete" type="Sprite2D" parent="BonusMissions2/ColorRect/MissionBullet3"]
+visible = false
+position = Vector2(11.5, 11.5)
+texture = ExtResource("5_gl61q")
+
+[node name="PlayerStats" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 144.0
+offset_right = 280.0
+offset_bottom = 352.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[node name="Active" type="ColorRect" parent="PlayerStats"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 261.0
+offset_bottom = 205.0
+color = Color(0.30588236, 0.34509805, 0.2901961, 1)
+
+[node name="FluxLabel" type="Label" parent="PlayerStats/Active"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 18.0
+offset_right = 54.0
+offset_bottom = 39.0
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 28
+text = "Flux:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PlayerStats/Active/FluxLabel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 70.0
+offset_right = 110.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 28
+text = "99"
+horizontal_alignment = 2
+
+[node name="ArmorLabel" type="Label" parent="PlayerStats/Active"]
+layout_mode = 0
+offset_left = 2.0
+offset_right = 67.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 28
+text = "Armor:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PlayerStats/Active/ArmorLabel"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 0
+offset_left = 70.0
+offset_right = 90.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("2_atbo8")
+theme_override_font_sizes/font_size = 28
+text = "99"
+horizontal_alignment = 2
+
+[node name="Deactive" type="ColorRect" parent="PlayerStats"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 156.0
+offset_bottom = 124.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 81.0
+offset_right = 118.0
+offset_bottom = 121.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 81.0
+offset_right = 219.0
+offset_bottom = 121.0
+color = Color(0, 0, 0, 1)

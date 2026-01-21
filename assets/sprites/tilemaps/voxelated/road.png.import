@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmbk4744c0sk6"
-path="res://.godot/imported/grass_1.png-40f9437d45673453a482603650b06eb0.ctex"
+uid="uid://rsxl8urnojfr"
+path="res://.godot/imported/road.png-fa5638d23498224beb73fbfce63ab4da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilemaps/voxelated/grass_1.png"
-dest_files=["res://.godot/imported/grass_1.png-40f9437d45673453a482603650b06eb0.ctex"]
+source_file="res://assets/sprites/tilemaps/voxelated/road.png"
+dest_files=["res://.godot/imported/road.png-fa5638d23498224beb73fbfce63ab4da.ctex"]
 
 [params]
 

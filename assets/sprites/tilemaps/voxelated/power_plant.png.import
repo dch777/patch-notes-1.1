@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce18jbmq4nmj4"
-path="res://.godot/imported/next_left_1.png-612ee3839f90d8335f95e10b07e67b38.ctex"
+uid="uid://b3x6rnidfnpup"
+path="res://.godot/imported/power_plant.png-27c2e0cb5134ea37beb9c4e91d050d29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/next_left_1.png"
-dest_files=["res://.godot/imported/next_left_1.png-612ee3839f90d8335f95e10b07e67b38.ctex"]
+source_file="res://assets/sprites/tilemaps/voxelated/power_plant.png"
+dest_files=["res://.godot/imported/power_plant.png-27c2e0cb5134ea37beb9c4e91d050d29.ctex"]
 
 [params]
 

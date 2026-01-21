@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wyubg0s6dala"
-path="res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"
+uid="uid://i2yvdwl2s1bf"
+path="res://.godot/imported/building_1.png-55a2d23dc5b1cda040fce317e4ce9077.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/reticle_2.png"
-dest_files=["res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"]
+source_file="res://assets/sprites/tilemaps/voxelated/building_1.png"
+dest_files=["res://.godot/imported/building_1.png-55a2d23dc5b1cda040fce317e4ce9077.ctex"]
 
 [params]
 

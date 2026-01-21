@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ipm2nrua0ks3"
-path="res://.godot/imported/next_left_2.png-fefe4181a41006599197c6a200d57575.ctex"
+uid="uid://r5lip4cwnenp"
+path="res://.godot/imported/building_2.png-2258df0ed406de215c382e1df3d4a1e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/next_left_2.png"
-dest_files=["res://.godot/imported/next_left_2.png-fefe4181a41006599197c6a200d57575.ctex"]
+source_file="res://assets/sprites/tilemaps/voxelated/building_2.png"
+dest_files=["res://.godot/imported/building_2.png-2258df0ed406de215c382e1df3d4a1e4.ctex"]
 
 [params]
 

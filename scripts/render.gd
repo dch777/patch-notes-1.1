@@ -5,8 +5,6 @@ signal shoot()
 signal next_weapon()
 signal prev_weapon()
 
-@onready var viewport := $SubViewport
-
 func next_button_pressed():
 	next_turn.emit()
 

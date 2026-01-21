@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wyubg0s6dala"
-path="res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"
+uid="uid://caaafbsst7cl3"
+path="res://.godot/imported/robot_sword_1.png-186cecc7653ac05ea9568eac23776f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/reticle_2.png"
-dest_files=["res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"]
+source_file="res://assets/sprites/characters/robot_sword_1.png"
+dest_files=["res://.godot/imported/robot_sword_1.png-186cecc7653ac05ea9568eac23776f8c.ctex"]
 
 [params]
 

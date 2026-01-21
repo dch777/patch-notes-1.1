@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wyubg0s6dala"
-path="res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"
+uid="uid://o1k23pqa2pti"
+path="res://.godot/imported/flying_bug_3.png-51f7651acc0802ef582108718d9ecdc6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/reticle_2.png"
-dest_files=["res://.godot/imported/reticle_2.png-5a69d5637740e999570295770f6b2a90.ctex"]
+source_file="res://assets/sprites/characters/flying_bug_3.png"
+dest_files=["res://.godot/imported/flying_bug_3.png-51f7651acc0802ef582108718d9ecdc6.ctex"]
 
 [params]
 
