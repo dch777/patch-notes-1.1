@@ -1,10 +1,15 @@
 class_name Player extends Entity
 
-@export var weapons: Array[Weapon] = [Shove.new(self)]
+@export var weapons: Array[Weapon] = []
 var selected_weapon: int
 var active: bool = false
-var aiming: bool = false
 var start_facing: Direction
+
+func _ready():
+	weapons = weapons.duplicate(true)
+	for i in range(weapons.size()):
+		weapons[i] = weapons[i].duplicate()
+		weapons[i].entity = self
 
 func _process(delta: float):
 	super._process(delta)
@@ -16,6 +21,10 @@ func _process(delta: float):
 			facing = axis * 2 + int(diff[axis] < 0.0)
 
 func start() -> void:
+	entities.assign(controller.find_children("*", "Entity"))
+	if health <= 0:
+		queue_free()
+
 	moves = 5
 	active = true
 
@@ -42,6 +51,8 @@ func move_finished() -> void:
 
 func draw(canvas: Canvas) -> void:
 	canvas.draw_circle(canvas.convert_vec(map_position), 25, Color.BLACK)
+
+func draw_target(canvas: Canvas) -> void:
 	if aiming:
 		weapons[selected_weapon].draw_attack(canvas)
 

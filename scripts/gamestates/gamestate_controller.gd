@@ -15,12 +15,10 @@ var map: AStarGrid2D
 @onready var hover_shader: ShaderMaterial = preload("res://assets/materials/hover.tres")
 
 @export var diagonal_mode: AStarGrid2D.DiagonalMode = AStarGrid2D.DiagonalMode.DIAGONAL_MODE_NEVER
-@export var hover_shader_enabled: bool = false
 
 var turn: int = 0
 var selected_entity: Entity
-var entities: Array[Entity]
-var hud: Control
+@export var hud: Control
 
 func _ready():
 	map = AStarGrid2D.new()
@@ -34,11 +32,9 @@ func _ready():
 	hover_shader.set_shader_parameter("map_origin", background.get_used_rect().position)
 	hover_shader.set_shader_parameter("global_pos_size", background.get_used_rect().size)
 
-	entities.assign(find_children("*", "Entity"))
-	hud = find_child("hud")
 	for state in find_children("*", "Gamestate"):
 		state.setup()
-	for entity in entities:
+	for entity in find_children("*", "Entity"):
 		entity.setup()
 
 	change_state(start_state)
@@ -50,6 +46,11 @@ func _process(delta: float):
 
 	var mouse_pos = to_global(get_local_mouse_position())
 	hover_shader.set_shader_parameter("canvas", canvas.get_texture())
+
+	if selected_entity is Player:
+		hud.skill_texture = selected_entity.weapons[selected_entity.selected_weapon].icon
+	else:
+		hud.skill_texture = null
 
 	if Input.is_action_just_released("select"):
 		if selected_entity and reachable:
@@ -70,8 +71,9 @@ func execute_action(action: Action):
 	current_state.handle_action(action)
 
 func entity_selected(entity: Entity):
-	entity_deselected()
-	selected_entity = entity
+	if selected_entity == null or !selected_entity.aiming:
+		entity_deselected()
+		selected_entity = entity
 
 func entity_deselected():
 	if selected_entity:

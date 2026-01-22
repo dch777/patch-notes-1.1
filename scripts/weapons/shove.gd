@@ -8,7 +8,7 @@ func attack() -> Entity:
 	var shove_pos = entity.map_position + entity.facing_vector()
 	var target: Entity
 
-	for e in entity.controller.entities:
+	for e in entity.entities:
 		if e.map_position == shove_pos:
 			target = e
 			target.teleport(target.map_position + entity.facing_vector(), false)

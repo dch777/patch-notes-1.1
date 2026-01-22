@@ -15,11 +15,11 @@ func execute():
 	while entity.map.is_in_boundsv(target_pos) and !entity.map.is_point_solid(target_pos):
 		target_pos += direction
 
-	for e in entity.controller.entities:
-		if e.map_position == target_pos:
+	for e in entity.entities:
+		if e and e.map_position == target_pos:
 			target = e
-			target.health -= damage
+			target.hurt(damage)
 
 func undo():
 	if target:
-		target.health += damage
+		target.heal(damage)

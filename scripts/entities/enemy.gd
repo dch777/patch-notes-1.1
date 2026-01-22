@@ -9,14 +9,22 @@ var enemies: Array[Enemy]
 var current_attack: Action
 
 func start() -> void:
+	entities.assign(controller.find_children("*", "Entity"))
+
+	if health <= 0:
+		finished.emit(null)
+		queue_free()
+
 	active = true
 	moves = max_moves
 	players.assign(controller.find_children("*", "Player"))
 	players.sort_custom(func (a, b):
 		return (a.map_position - map_position).length() > (b.map_position - map_position).length()
 	)
+	players = players.filter(func(player): return player.health > 0)
 	enemies.assign(controller.find_children("*", "Enemy"))
 
+func start_move() -> void:
 	target = Vector2i.MAX
 	find_target(moves, map_position)
 	move(target)
@@ -30,7 +38,6 @@ func move_finished() -> void:
 
 func draw(canvas: Canvas) -> void:
 	canvas.draw_circle(canvas.convert_vec(map_position), 25, Color.BLACK)
-	draw_target(canvas)
 
 # func draw_selected(canvas: Canvas) -> void:
 # 	canvas.draw_reachable(moves + 1, map_position, Color.RED)

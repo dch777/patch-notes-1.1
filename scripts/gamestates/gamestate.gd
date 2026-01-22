@@ -9,7 +9,7 @@ signal finished(next_state: Gamestate)
 func setup() -> void:
 	controller = get_parent()
 	hud = controller.hud
-	entities = controller.entities
+	entities.assign(controller.find_children("*", "Entity"))
 	finished.connect(controller.change_state)
 
 	init()

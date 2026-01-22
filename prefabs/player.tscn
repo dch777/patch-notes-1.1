@@ -1,0 +1,130 @@
+[gd_scene load_steps=24 format=3 uid="uid://dfjtah3ddfx6g"]
+
+[ext_resource type="Script" uid="uid://bw4frxjqkj5l4" path="res://scripts/entities/player.gd" id="1_72ieh"]
+[ext_resource type="Texture2D" uid="uid://ds3386fgmhqsk" path="res://assets/sprites/characters/robot_flamethrower_1.png" id="1_edtk3"]
+[ext_resource type="Script" uid="uid://t5y7w20dwyeo" path="res://scripts/weapons/shove.gd" id="2_4dohe"]
+[ext_resource type="Texture2D" uid="uid://djcavxag5d5rg" path="res://assets/sprites/characters/robot_flamethrower_2.png" id="2_q2wkl"]
+[ext_resource type="Texture2D" uid="uid://cxcoa5j4nwime" path="res://assets/sprites/characters/robot_flamethrower_3.png" id="3_f2e50"]
+[ext_resource type="Texture2D" uid="uid://chg2vivgno7n4" path="res://assets/sprites/characters/robot_gun_1.png" id="4_22xyk"]
+[ext_resource type="Script" uid="uid://d2staoohcpown" path="res://scripts/weapons/laser.gd" id="4_q2wkl"]
+[ext_resource type="Script" uid="uid://dx6vp2nhcx600" path="res://scripts/weapons/weapon.gd" id="5_22xyk"]
+[ext_resource type="Texture2D" uid="uid://6ik1h806ethc" path="res://assets/sprites/characters/robot_gun_2.png" id="5_r3tw4"]
+[ext_resource type="Texture2D" uid="uid://bsnwcfygw2kol" path="res://assets/sprites/characters/robot_gun_3.png" id="6_nmymu"]
+[ext_resource type="Texture2D" uid="uid://bne5ccijuj3b5" path="res://assets/sprites/characters/robot_laser_1.png" id="7_gf0v6"]
+[ext_resource type="Texture2D" uid="uid://mh5l80siblab" path="res://assets/sprites/characters/robot_laser_2.png" id="8_cv2ms"]
+[ext_resource type="Texture2D" uid="uid://bd8gnnl3m55qa" path="res://assets/sprites/characters/robot_laser_3.png" id="9_g56qp"]
+[ext_resource type="Texture2D" uid="uid://cb27gfbtne4yf" path="res://assets/sprites/characters/robot_rocket_1.png" id="10_axxvs"]
+[ext_resource type="Texture2D" uid="uid://budvtkqitthdt" path="res://assets/sprites/characters/robot_rocket_2.png" id="11_ay5dx"]
+[ext_resource type="Texture2D" uid="uid://d2fut0yt8g7mf" path="res://assets/sprites/characters/robot_rocket_3.png" id="12_5loxu"]
+[ext_resource type="Texture2D" uid="uid://caaafbsst7cl3" path="res://assets/sprites/characters/robot_sword_1.png" id="13_sh7kr"]
+[ext_resource type="Texture2D" uid="uid://bujwkpfme0evt" path="res://assets/sprites/characters/robot_sword_2.png" id="14_8jxos"]
+[ext_resource type="Texture2D" uid="uid://cal62bhx4y7kn" path="res://assets/sprites/characters/robot_sword_3.png" id="15_2c4y0"]
+
+[sub_resource type="Resource" id="Resource_f2e50"]
+script = ExtResource("2_4dohe")
+icon = ExtResource("4_22xyk")
+metadata/_custom_type_script = "uid://t5y7w20dwyeo"
+
+[sub_resource type="Resource" id="Resource_22xyk"]
+script = ExtResource("4_q2wkl")
+icon = ExtResource("7_gf0v6")
+metadata/_custom_type_script = "uid://d2staoohcpown"
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_f2e50"]
+points = PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4pj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_edtk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q2wkl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f2e50")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_22xyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r3tw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nmymu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gf0v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cv2ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_g56qp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_axxvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ay5dx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_5loxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_sh7kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_8jxos")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_2c4y0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_22xyk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r3tw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_nmymu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_r3tw4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="player" type="Node2D" node_paths=PackedStringArray("sprite", "select_area")]
+y_sort_enabled = true
+script = ExtResource("1_72ieh")
+weapons = Array[ExtResource("5_22xyk")]([SubResource("Resource_f2e50"), SubResource("Resource_22xyk")])
+sprite = NodePath("AnimatedSprite2D")
+select_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+position = Vector2(0, 6)
+shape = SubResource("ConvexPolygonShape2D_f2e50")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_w4pj3")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.36281806
+offset = Vector2(0, -12)
+
+[connection signal="input_event" from="Area2D" to="." method="area_clicked"]

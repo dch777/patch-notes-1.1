@@ -1,36 +1,34 @@
-[gd_scene load_steps=13 format=4 uid="uid://brl8026h7nfwm"]
+[gd_scene load_steps=10 format=4 uid="uid://brl8026h7nfwm"]
 
-[ext_resource type="PackedScene" uid="uid://mco2qos1hl16" path="res://ui/hud.tscn" id="1_005re"]
-[ext_resource type="PackedScene" uid="uid://bdgnfve85idq6" path="res://logical/gamestate_controller.tscn" id="1_wxwic"]
-[ext_resource type="Script" uid="uid://beja6hrajicve" path="res://scripts/gamestates/player_turn.gd" id="2_gxe3g"]
-[ext_resource type="Script" uid="uid://5c8sulyaa52f" path="res://scripts/canvas.gd" id="2_qm0ky"]
-[ext_resource type="Script" uid="uid://f562yfikb17a" path="res://scripts/gamestates/enemy_turn.gd" id="3_ren8u"]
-[ext_resource type="Script" uid="uid://bw4frxjqkj5l4" path="res://scripts/entities/player.gd" id="5_33hta"]
-[ext_resource type="Material" uid="uid://7pmbb2o7bved" path="res://assets/materials/select.tres" id="5_maoow"]
-[ext_resource type="Texture2D" uid="uid://by77g0ax424um" path="res://assets/sprites/tilemaps/isometric tileset/separated images/tile_053.png" id="6_hfe8r"]
-[ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="6_qm0ky"]
-[ext_resource type="Texture2D" uid="uid://dil5knnh8cbnd" path="res://assets/sprites/tilemaps/isometric tileset/separated images/tile_044.png" id="8_005re"]
-[ext_resource type="Script" uid="uid://blk0vmmwserx5" path="res://scripts/entities/ranged.gd" id="11_005re"]
+[ext_resource type="PackedScene" uid="uid://mco2qos1hl16" path="res://ui/hud.tscn" id="1_pb8y7"]
+[ext_resource type="PackedScene" uid="uid://bdgnfve85idq6" path="res://logical/gamestate_controller.tscn" id="2_hy0rb"]
+[ext_resource type="Script" uid="uid://5c8sulyaa52f" path="res://scripts/canvas.gd" id="3_mxp4k"]
+[ext_resource type="Script" uid="uid://beja6hrajicve" path="res://scripts/gamestates/player_turn.gd" id="4_d7v53"]
+[ext_resource type="Script" uid="uid://f562yfikb17a" path="res://scripts/gamestates/enemy_turn.gd" id="5_0qmeg"]
+[ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="6_ta7ci"]
+[ext_resource type="PackedScene" uid="uid://bbjouiorlx018" path="res://prefabs/bug.tscn" id="8_d5x7l"]
+[ext_resource type="PackedScene" uid="uid://dfjtah3ddfx6g" path="res://prefabs/player.tscn" id="12_hy0rb"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_qm0ky"]
 viewport_path = NodePath("GamestateController/canvas_viewport")
 
-[node name="Test" type="Node2D"]
+[node name="Level" type="Node2D"]
 z_index = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_005re")]
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("1_pb8y7")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
 
-[node name="GamestateController" parent="." node_paths=PackedStringArray("start_state", "background", "foreground", "canvas") instance=ExtResource("1_wxwic")]
+[node name="GamestateController" parent="." node_paths=PackedStringArray("start_state", "background", "foreground", "canvas", "hud") instance=ExtResource("2_hy0rb")]
 y_sort_enabled = true
 start_state = NodePath("player_turn")
 background = NodePath("background")
 foreground = NodePath("foreground")
 canvas = NodePath("canvas_viewport/canvas")
+hud = NodePath("../CanvasLayer/HUD")
 
 [node name="canvas_viewport" type="SubViewport" parent="GamestateController"]
 transparent_bg = true
@@ -38,18 +36,18 @@ canvas_item_default_texture_filter = 0
 size = Vector2i(1024, 1024)
 
 [node name="canvas" type="Node2D" parent="GamestateController/canvas_viewport" node_paths=PackedStringArray("controller", "canvas_viewport", "background", "foreground")]
-script = ExtResource("2_qm0ky")
+script = ExtResource("3_mxp4k")
 controller = NodePath("../..")
 canvas_viewport = NodePath("..")
 background = NodePath("../../background")
 foreground = NodePath("../../foreground")
 
 [node name="player_turn" type="Node2D" parent="GamestateController" node_paths=PackedStringArray("next_state")]
-script = ExtResource("2_gxe3g")
+script = ExtResource("4_d7v53")
 next_state = NodePath("../enemy_turn")
 
 [node name="enemy_turn" type="Node2D" parent="GamestateController" node_paths=PackedStringArray("next_state")]
-script = ExtResource("3_ren8u")
+script = ExtResource("5_0qmeg")
 next_state = NodePath("../player_turn")
 
 [node name="shadow" type="Polygon2D" parent="GamestateController"]
@@ -61,70 +59,15 @@ polygon = PackedVector2Array(-256, 0, 0, 128, 256, 0, 0, -128)
 
 [node name="background" type="TileMapLayer" parent="GamestateController"]
 z_index = -1
-z_as_relative = false
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD//wQAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAAAAAAAAAAGAAQAAAAAAAAAAAAHAAQAAAAAAAAAAAAHAAMAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAHAP7/AAAAAAAAAAAHAP3/AAAAAAAAAAAHAPz/AAAAAAAAAAAHAPv/AAAAAAAAAAAHAPr/AAAAAAAAAAAHAPn/AAAAAAAAAAAHAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAAEAPj/AAAAAAAAAAADAPj/AAAAAAAAAAACAPj/AAAAAAAAAAABAPj/AAAAAAAAAAAAAPj/AAAAAAAAAAD///j/AAAAAAAAAAD+//j/AAAAAAAAAAD9//j/AAAAAAAAAAD8//j/AAAAAAAAAAD7//j/AAAAAAAAAAD6//j/AAAAAAAAAAD5//j/AAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD5//n/AAAAAAAAAAD6//n/AAAAAAAAAAD7//n/AAAAAAAAAAD8//n/AAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAD7//r/AAAAAAAAAAD6//r/AAAAAAAAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD5//v/AAAAAAAAAAD6//v/AAAAAAAAAAD7//v/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAACAPv/AAAAAAAAAAADAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAADAPz/AAAAAAAAAAACAPz/AAAAAAAAAAABAPz/AAAAAAAAAAAAAPz/AAAAAAAAAAD///z/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAD7//z/AAAAAAAAAAD6//z/AAAAAAAAAAD5//z/AAAAAAAAAAD4//z/AAAAAAAAAAD4//3/AAAAAAAAAAD5//3/AAAAAAAAAAD6//3/AAAAAAAAAAD7//3/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAD+//3/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP3/AAAAAAAAAAACAP3/AAAAAAAAAAADAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAEAP7/AAAAAAAAAAADAP7/AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD8//7/AAAAAAAAAAD7//7/AAAAAAAAAAD6//7/AAAAAAAAAAD5//7/AAAAAAAAAAD4//7/AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD7////AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAAAAP//AAAAAAAAAAABAP//AAAAAAAAAAACAP//AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAGAP//AAAAAAAAAAAGAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAADAAAAAAAAAAAAAAACAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD9/wAAAAAAAAAAAAD8/wAAAAAAAAAAAAD7/wAAAAAAAAAAAAD6/wAAAAAAAAAAAAD5/wAAAAAAAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAAAAAAAAAD5/wEAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAGAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAADAAIAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD9/wIAAAAAAAAAAAD8/wIAAAAAAAAAAAD7/wIAAAAAAAAAAAD6/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAAAAAAAAAD5/wMAAAAAAAAAAAD6/wMAAAAAAAAAAAD7/wMAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAD+/wQAAAAAAAAAAAD9/wQAAAAAAAAAAAD8/wQAAAAAAAAAAAD7/wQAAAAAAAAAAAD6/wQAAAAAAAAAAAD5/wQAAAAAAAAAAAD4/wQAAAAAAAAAAAD4/wUAAAAAAAAAAAD5/wUAAAAAAAAAAAD6/wUAAAAAAAAAAAD7/wUAAAAAAAAAAAD8/wUAAAAAAAAAAAD9/wUAAAAAAAAAAAD+/wUAAAAAAAAAAAD//wUAAAAAAAAAAAAAAAUAAAAAAAAAAAABAAUAAAAAAAAAAAACAAUAAAAAAAAAAAADAAUAAAAAAAAAAAAEAAUAAAAAAAAAAAAFAAUAAAAAAAAAAAAGAAUAAAAAAAAAAAAHAAUAAAAAAAAAAAAHAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAADAAYAAAAAAAAAAAACAAYAAAAAAAAAAAABAAYAAAAAAAAAAAAAAAYAAAAAAAAAAAD//wYAAAAAAAAAAAD+/wYAAAAAAAAAAAD9/wYAAAAAAAAAAAD8/wYAAAAAAAAAAAD7/wYAAAAAAAAAAAD6/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD4/wYAAAAAAAAAAAD4/wcAAAAAAAAAAAD5/wcAAAAAAAAAAAD6/wcAAAAAAAAAAAD7/wcAAAAAAAAAAAD8/wcAAAAAAAAAAAD9/wcAAAAAAAAAAAD+/wcAAAAAAAAAAAD//wcAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAADAAcAAAAAAAAAAAAEAAcAAAAAAAAAAAAFAAcAAAAAAAAAAAAGAAcAAAAAAAAAAAAHAAcAAAAAAAAAAAA=")
-tile_set = ExtResource("6_qm0ky")
+tile_set = ExtResource("6_ta7ci")
 
 [node name="foreground" type="TileMapLayer" parent="GamestateController"]
 light_mask = 0
-z_as_relative = false
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAD9/wIAAgAAAAAAAAAFAP7/AgAAAAAAAAD///v/AgAAAAAAAAAEAAQAAgAAAAAAAAA=")
-tile_set = ExtResource("6_qm0ky")
-
-[node name="player" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
-z_as_relative = false
-y_sort_enabled = true
-material = ExtResource("5_maoow")
-texture = ExtResource("8_005re")
-offset = Vector2(0, -8)
-script = ExtResource("5_33hta")
-sprite = NodePath(".")
-
-[node name="player2" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
-z_as_relative = false
-y_sort_enabled = true
-material = ExtResource("5_maoow")
-position = Vector2(0, 1)
-texture = ExtResource("8_005re")
-offset = Vector2(0, -8)
-script = ExtResource("5_33hta")
-sprite = NodePath(".")
-map_position = Vector2i(3, 0)
-
-[node name="enemy" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
-z_as_relative = false
-y_sort_enabled = true
-material = ExtResource("5_maoow")
-texture = ExtResource("6_hfe8r")
-offset = Vector2(0, -8)
-script = ExtResource("11_005re")
-sprite = NodePath(".")
-map_position = Vector2i(-1, 5)
-speed = 10.0
-
-[node name="enemy2" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
-z_as_relative = false
-y_sort_enabled = true
-material = ExtResource("5_maoow")
-texture = ExtResource("6_hfe8r")
-offset = Vector2(0, -8)
-script = ExtResource("11_005re")
-sprite = NodePath(".")
-map_position = Vector2i(7, 5)
-speed = 10.0
-
-[node name="enemy3" type="Sprite2D" parent="GamestateController" node_paths=PackedStringArray("sprite")]
-z_as_relative = false
-y_sort_enabled = true
-material = ExtResource("5_maoow")
-texture = ExtResource("6_hfe8r")
-offset = Vector2(0, -8)
-script = ExtResource("11_005re")
-sprite = NodePath(".")
-map_position = Vector2i(3, 3)
-speed = 10.0
+tile_set = ExtResource("6_ta7ci")
 
 [node name="TextureRect" type="TextureRect" parent="GamestateController"]
 visible = false
@@ -136,5 +79,20 @@ offset_bottom = 273.0
 texture = SubResource("ViewportTexture_qm0ky")
 expand_mode = 1
 
-[connection signal="next_turn" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="undo_action"]
+[node name="player" parent="GamestateController" instance=ExtResource("12_hy0rb")]
+position = Vector2(-78, -7)
+
+[node name="player2" parent="GamestateController" instance=ExtResource("12_hy0rb")]
+map_position = Vector2i(-6, -6)
+
+[node name="ranged_bug" parent="GamestateController" instance=ExtResource("8_d5x7l")]
+map_position = Vector2i(5, 5)
+
+[node name="ranged_bug2" parent="GamestateController" instance=ExtResource("8_d5x7l")]
+map_position = Vector2i(2, -4)
+
+[connection signal="next_turn" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="next_turn"]
+[connection signal="next_weapon" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="next_weapon"]
+[connection signal="prev_weapon" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="prev_weapon"]
 [connection signal="shoot" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="fire"]
+[connection signal="undo" from="CanvasLayer/HUD" to="GamestateController/player_turn" method="undo_action"]

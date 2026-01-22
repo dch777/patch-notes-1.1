@@ -12,22 +12,24 @@ var path: Array[Vector2i]
 var tween: Tween
 
 @export_group("Sprite")
-@export var sprite: Sprite2D
+@export var sprite: AnimatedSprite2D
 @export var select_shader: ShaderMaterial = preload("res://assets/materials/select.tres")
+@export var select_area: Area2D
 
 @export_group("Gameplay")
 var moves: int = 0
 enum Direction { EAST, WEST, SOUTH, NORTH }
+var aiming: bool = false
 @onready var health = max_health
 
 @export var map_position: Vector2i
 @export var facing: Direction
-@export var speed: float = 2.0
+@export var speed: float = 10.0
 @export var max_health: int = 5
 
 func setup() -> void:
 	controller = get_parent()
-	entities = controller.entities
+	entities.assign(controller.find_children("*", "Entity"))
 	map = controller.map
 	finished.connect(controller.entity_finished)
 	execute_action.connect(controller.execute_action)
@@ -48,19 +50,20 @@ func start() -> void:
 func end() -> void:
 	pass
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("select") and sprite.get_rect().has_point(get_local_mouse_position()):
+func area_clicked(viewport: Node, event: InputEvent, shape_idx: int):
+	if event.is_action_released("select"):
 		if !selected:
-			controller.entity_selected(self)
-			selected = true
-			select()
-		else:
+			if controller.selected_entity == null or !controller.selected_entity.aiming:
+				controller.entity_selected(self)
+				selected = true
+				select()
+		elif !aiming:
 			controller.entity_deselected()
 			selected = false
 			deselect()
 
 func _process(delta: float) -> void:
-	material.set_shader_parameter("selected", float(selected))
+	sprite.material.set_shader_parameter("selected", float(selected))
 
 func select() -> void:
 	pass
@@ -117,6 +120,21 @@ func draw(canvas: Canvas) -> void:
 
 func draw_selected(canvas: Canvas) -> void:
 	pass
+
+func draw_target(canvas: Canvas) -> void:
+	pass
+
+func hurt(damage: int) -> void:
+	health -= damage
+	if health <= 0:
+		visible = false
+		map.set_point_solid(map_position, false)
+
+func heal(damage: int) -> void:
+	health += damage
+	if health > 0:
+		visible = true
+		map.set_point_solid(map_position)
 
 func facing_vector() -> Vector2i:
 	var option = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]

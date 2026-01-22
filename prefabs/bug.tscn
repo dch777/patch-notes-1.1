@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://bbjouiorlx018"]
+
+[ext_resource type="Script" uid="uid://blk0vmmwserx5" path="res://scripts/entities/ranged.gd" id="1_n16bx"]
+[ext_resource type="Texture2D" uid="uid://b5ax2kvtdn71p" path="res://assets/sprites/characters/ranged_bug_1.png" id="2_jrdtq"]
+[ext_resource type="Texture2D" uid="uid://5vayyy3o7hh3" path="res://assets/sprites/characters/ranged_bug_2.png" id="3_bism1"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jrdtq"]
+points = PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifmen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jrdtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bism1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jrdtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bism1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="ranged_bug" type="Node2D" node_paths=PackedStringArray("sprite", "select_area")]
+y_sort_enabled = true
+script = ExtResource("1_n16bx")
+sprite = NodePath("AnimatedSprite2D")
+select_area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+y_sort_enabled = true
+position = Vector2(0, -8)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+position = Vector2(0, 6)
+shape = SubResource("ConvexPolygonShape2D_jrdtq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
+sprite_frames = SubResource("SpriteFrames_ifmen")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.80538344
+offset = Vector2(0, -12)
+
+[connection signal="input_event" from="Area2D" to="." method="area_clicked"]

@@ -98,6 +98,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_546lt")
 
 [node name="DashBgShadow1" type="Polygon2D" parent="."]
@@ -365,6 +366,13 @@ offset_right = 328.0
 offset_bottom = 632.0
 color = Color(0.39215687, 0.3882353, 0.39607844, 1)
 
+[node name="SkillTexture" type="TextureRect" parent="SkillIcon"]
+clip_contents = true
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 112.0
+expand_mode = 1
+
 [node name="NextLeftBtn" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 181.0
@@ -423,3 +431,9 @@ offset_left = 12.0
 offset_top = 516.0
 offset_right = 164.0
 offset_bottom = 636.0
+
+[connection signal="button_up" from="NextBtn" to="." method="next_button_pressed"]
+[connection signal="button_up" from="UndoBtn" to="." method="undo_button_pressed"]
+[connection signal="button_up" from="NextLeftBtn" to="." method="left_button_pressed"]
+[connection signal="button_up" from="NextRightBtn" to="." method="right_button_pressed"]
+[connection signal="button_up" from="FireBtn" to="." method="shoot_button_pressed"]

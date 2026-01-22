@@ -19,15 +19,24 @@ func _draw():
 
 	if controller.selected_entity:
 		controller.selected_entity.draw_selected(self)
+
 	for player in controller.find_children("*", "Player"):
-		player.draw(self)
+		if player.health > 0:
+			player.draw(self)
 	for enemy in controller.find_children("*", "Enemy"):
-		enemy.draw(self)
-	for cell in foreground.get_used_cells():
-		draw_circle(convert_vec(cell), 25, Color.BLACK)
+		if enemy.health > 0:
+			enemy.draw(self)
+			enemy.draw_target(self)
 
 	if reachable and hover_enabled:
 		draw_circle(convert_vec(hovered_cell), 25, Color.BLACK)
+
+	for player in controller.find_children("*", "Player"):
+		if player.health > 0:
+			player.draw_target(self)
+
+	for cell in foreground.get_used_cells():
+		draw_circle(convert_vec(cell), 25, Color.BLACK)
 
 func convert_vec(vec: Vector2):
 	var rect = background.get_used_rect()
