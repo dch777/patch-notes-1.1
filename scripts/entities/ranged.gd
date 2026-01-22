@@ -37,4 +37,6 @@ func set_attack() -> void:
 		var d = map.get_id_path(map_position, player.map_position).size()
 		if (player.map_position.x == map_position.x or player.map_position.y == map_position.y) and d - 1 == (player.map_position - map_position).length():
 			current_attack = Shoot.new(self, (player.map_position - map_position).clampi(-1, 1), 3)
+			facing = vector_to_direction(map_position, player.map_position)
+			sprite.play("idle_" + facing_string())
 		map.set_point_solid(player.map_position)

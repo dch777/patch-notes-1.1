@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cixt4y7nwkdb2"
-path="res://.godot/imported/armored_bug_2.png-38ea0bf28d49d0038e8cd0c342123b41.ctex"
+uid="uid://b5ax2kvtdn71p"
+path="res://.godot/imported/ranged_bug_1_south.png-32edc1271e11b502ac5d7b15a1f09b77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/armored_bug_2.png"
-dest_files=["res://.godot/imported/armored_bug_2.png-38ea0bf28d49d0038e8cd0c342123b41.ctex"]
+source_file="res://assets/sprites/characters/ranged_bug_1_south.png"
+dest_files=["res://.godot/imported/ranged_bug_1_south.png-32edc1271e11b502ac5d7b15a1f09b77.ctex"]
 
 [params]
 

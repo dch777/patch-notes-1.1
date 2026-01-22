@@ -12,6 +12,8 @@ var path: Array[Vector2i]
 var tween: Tween
 
 @export_group("Sprite")
+var anim: String = "idle"
+
 @export var sprite: AnimatedSprite2D
 @export var select_shader: ShaderMaterial = preload("res://assets/materials/select.tres")
 @export var select_area: Area2D
@@ -96,6 +98,10 @@ func move(dest: Vector2i) -> void:
 			tween.tween_property(self, "position", get_parent().map_to_global(pos), (pos - prev_pos).length() / speed)
 			tween.parallel().tween_property(self, "map_position", pos, (pos - prev_pos).length() / speed)
 			tween.parallel().tween_property(self, "moves", -1, (pos - prev_pos).length() / speed).as_relative()
+			tween.parallel().tween_property(self, "facing", vector_to_direction(prev_pos, pos), (pos - prev_pos).length() / speed)
+			tween.tween_callback(func():
+				sprite.play("idle_" + facing_string())
+			)
 			prev_pos = pos
 		tween.tween_callback(move_finished)
 	else:
@@ -136,6 +142,15 @@ func heal(damage: int) -> void:
 		visible = true
 		map.set_point_solid(map_position)
 
+func facing_string() -> String:
+	var option = ["east", "west", "south", "north"]
+	return option[facing]
+
 func facing_vector() -> Vector2i:
 	var option = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
 	return option[facing]
+
+func vector_to_direction(start: Vector2i, end: Vector2i) -> Direction:
+	var diff = end - start
+	var axis = diff.abs().max_axis_index()
+	return axis * 2 + int(diff[axis] < 0.0)

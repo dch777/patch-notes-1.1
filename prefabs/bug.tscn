@@ -1,23 +1,45 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbjouiorlx018"]
+[gd_scene load_steps=12 format=3 uid="uid://bbjouiorlx018"]
 
 [ext_resource type="Script" uid="uid://blk0vmmwserx5" path="res://scripts/entities/ranged.gd" id="1_n16bx"]
-[ext_resource type="Texture2D" uid="uid://b5ax2kvtdn71p" path="res://assets/sprites/characters/ranged_bug_1.png" id="2_jrdtq"]
-[ext_resource type="Texture2D" uid="uid://5vayyy3o7hh3" path="res://assets/sprites/characters/ranged_bug_2.png" id="3_bism1"]
+[ext_resource type="Texture2D" uid="uid://b5ax2kvtdn71p" path="res://assets/sprites/characters/ranged_bug_1_south.png" id="2_jrdtq"]
+[ext_resource type="Texture2D" uid="uid://co2om2rv0sco8" path="res://assets/sprites/characters/ranged_bug_1_east.png" id="2_tiel5"]
+[ext_resource type="Texture2D" uid="uid://brhnmda3q120m" path="res://assets/sprites/characters/ranged_bug_2_east.png" id="3_5cqdw"]
+[ext_resource type="Texture2D" uid="uid://5vayyy3o7hh3" path="res://assets/sprites/characters/ranged_bug_2_south.png" id="3_bism1"]
+[ext_resource type="Texture2D" uid="uid://bf03tmmwl3qf7" path="res://assets/sprites/characters/ranged_bug_1_north.png" id="4_e8sc3"]
+[ext_resource type="Texture2D" uid="uid://brknyn4uq0quo" path="res://assets/sprites/characters/ranged_bug_2_north.png" id="5_gd7h8"]
+[ext_resource type="Texture2D" uid="uid://detplg0l1i4x2" path="res://assets/sprites/characters/ranged_bug_1_west.png" id="8_iqaoi"]
+[ext_resource type="Texture2D" uid="uid://dcp6fetr4cwnp" path="res://assets/sprites/characters/ranged_bug_2_west.png" id="9_wkdh4"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_jrdtq"]
 points = PackedVector2Array(-16, 0, 0, 8, 16, 0, 0, -8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ifmen"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_jrdtq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_bism1")
-}],
+"frames": [],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tiel5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5cqdw")
+}],
+"loop": true,
+"name": &"idle_east",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_e8sc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gd7h8")
+}],
+"loop": true,
+"name": &"idle_north",
 "speed": 5.0
 }, {
 "frames": [{
@@ -28,7 +50,18 @@ animations = [{
 "texture": ExtResource("3_bism1")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"idle_south",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_iqaoi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wkdh4")
+}],
+"loop": true,
+"name": &"idle_west",
 "speed": 5.0
 }]
 
@@ -50,9 +83,9 @@ shape = SubResource("ConvexPolygonShape2D_jrdtq")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_ifmen")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.80538344
+animation = &"idle_east"
+autoplay = "idle_south"
+frame_progress = 0.6107487
 offset = Vector2(0, -12)
 
 [connection signal="input_event" from="Area2D" to="." method="area_clicked"]

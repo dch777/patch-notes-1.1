@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5vayyy3o7hh3"
-path="res://.godot/imported/ranged_bug_2.png-155d30ba8459d0949aa4bed3b87cdee5.ctex"
+uid="uid://bf03tmmwl3qf7"
+path="res://.godot/imported/ranged_bug_1_north.png-a0e47b344d8daef9dab1034a4480b769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/characters/ranged_bug_2.png"
-dest_files=["res://.godot/imported/ranged_bug_2.png-155d30ba8459d0949aa4bed3b87cdee5.ctex"]
+source_file="res://assets/sprites/characters/ranged_bug_1_north.png"
+dest_files=["res://.godot/imported/ranged_bug_1_north.png-a0e47b344d8daef9dab1034a4480b769.ctex"]
 
 [params]
 
