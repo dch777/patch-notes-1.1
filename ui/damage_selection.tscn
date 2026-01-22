@@ -1,0 +1,130 @@
+[gd_scene load_steps=18 format=3 uid="uid://dloe2qnv8q6co"]
+
+[ext_resource type="Texture2D" uid="uid://q2myyfhxket6" path="res://assets/ui/chassis_icon_1.png" id="1_ws073"]
+[ext_resource type="Texture2D" uid="uid://bsruowvhblmw6" path="res://assets/ui/chassis_icon_3.png" id="2_g7w7j"]
+[ext_resource type="Texture2D" uid="uid://bvmob03n484kt" path="res://assets/ui/chassis_icon_2.png" id="3_py55c"]
+[ext_resource type="Texture2D" uid="uid://mk26ymdpxifl" path="res://assets/ui/wea_a_icon_1.png" id="4_f0udx"]
+[ext_resource type="Texture2D" uid="uid://cr7g2wwmf5nbb" path="res://assets/ui/wea_a_icon_3.png" id="5_oyp71"]
+[ext_resource type="Texture2D" uid="uid://dncixo13v6p5" path="res://assets/ui/wea_a_icon_2.png" id="6_r5kv3"]
+[ext_resource type="Texture2D" uid="uid://bmw0p2t06dvvc" path="res://assets/ui/wea_b_icon_1.png" id="7_tprca"]
+[ext_resource type="Texture2D" uid="uid://bx7x5hcqsi86k" path="res://assets/ui/wea_b_icon_3.png" id="8_nqrpk"]
+[ext_resource type="Texture2D" uid="uid://bkn8giesoep0y" path="res://assets/ui/wea_b_icon_2.png" id="9_786po"]
+[ext_resource type="Texture2D" uid="uid://m65wlm8lgq10" path="res://assets/ui/leg_l_icon_1.png" id="10_gq217"]
+[ext_resource type="Texture2D" uid="uid://bicvbehbxmdkd" path="res://assets/ui/leg_l_icon_3.png" id="11_f8b0l"]
+[ext_resource type="Texture2D" uid="uid://cob0jwkbw0v4p" path="res://assets/ui/leg_l_icon_2.png" id="12_idr6t"]
+[ext_resource type="Texture2D" uid="uid://di0si1jfnh70m" path="res://assets/ui/leg_r_icon_1.png" id="13_cvj0t"]
+[ext_resource type="Texture2D" uid="uid://crgpbv85wjr20" path="res://assets/ui/leg_r_icon_3.png" id="14_rec2o"]
+[ext_resource type="Texture2D" uid="uid://bruotgfotwasa" path="res://assets/ui/leg_r_icon_2.png" id="15_2nnfy"]
+[ext_resource type="Shader" uid="uid://dxfmcw76s7pjl" path="res://assets/shaders/crt.gdshader" id="16_rec2o"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2nnfy"]
+shader = ExtResource("16_rec2o")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(0, 60)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 60.00000285
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0010000000475
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.00500004773750006
+shader_parameter/brightness = 2.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+
+[node name="DamageSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -800.0
+offset_bottom = -408.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 352.0
+offset_bottom = 240.0
+color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[node name="Bg2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 349.0
+offset_bottom = 237.0
+color = Color(0.30588236, 0.34509805, 0.2901961, 1)
+
+[node name="ChassisBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 16.0
+offset_right = 224.0
+offset_bottom = 112.0
+texture_normal = ExtResource("1_ws073")
+texture_pressed = ExtResource("2_g7w7j")
+texture_hover = ExtResource("2_g7w7j")
+texture_disabled = ExtResource("3_py55c")
+
+[node name="WeaABtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 112.0
+offset_bottom = 112.0
+texture_normal = ExtResource("4_f0udx")
+texture_pressed = ExtResource("5_oyp71")
+texture_hover = ExtResource("5_oyp71")
+texture_disabled = ExtResource("6_r5kv3")
+
+[node name="WeaBBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 16.0
+offset_right = 336.0
+offset_bottom = 112.0
+texture_normal = ExtResource("7_tprca")
+texture_pressed = ExtResource("8_nqrpk")
+texture_hover = ExtResource("8_nqrpk")
+texture_disabled = ExtResource("9_786po")
+
+[node name="LegLBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 128.0
+offset_right = 168.0
+offset_bottom = 224.0
+texture_normal = ExtResource("10_gq217")
+texture_pressed = ExtResource("11_f8b0l")
+texture_hover = ExtResource("11_f8b0l")
+texture_disabled = ExtResource("12_idr6t")
+
+[node name="LegRBtn" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_top = 128.0
+offset_right = 280.0
+offset_bottom = 224.0
+texture_normal = ExtResource("13_cvj0t")
+texture_pressed = ExtResource("14_rec2o")
+texture_hover = ExtResource("14_rec2o")
+texture_disabled = ExtResource("15_2nnfy")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2nnfy")
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.0
+offset_right = 349.0
+offset_bottom = 237.0
+mouse_filter = 2

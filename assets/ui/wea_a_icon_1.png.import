@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boggnudpb0r3x"
-path="res://.godot/imported/reticle_2.png-25df3dbe3fcf347508af02c7616d4b78.ctex"
+uid="uid://mk26ymdpxifl"
+path="res://.godot/imported/wea_a_icon_1.png-b0fa12d6de4d4a8334d53bb5842fe964.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://reticle_2.png"
-dest_files=["res://.godot/imported/reticle_2.png-25df3dbe3fcf347508af02c7616d4b78.ctex"]
+source_file="res://assets/ui/wea_a_icon_1.png"
+dest_files=["res://.godot/imported/wea_a_icon_1.png-b0fa12d6de4d4a8334d53bb5842fe964.ctex"]
 
 [params]
 

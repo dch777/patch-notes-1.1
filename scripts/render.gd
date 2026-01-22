@@ -12,4 +12,4 @@ func polygon_to_png():
 
 	var image: Image = viewport.get_texture().get_image()
 
-	image.save_png("res://reticle_2.png")
+	image.save_png("res://chassis_icon.png")
