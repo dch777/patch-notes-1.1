@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://mco2qos1hl16"]
+[gd_scene load_steps=20 format=4 uid="uid://mco2qos1hl16"]
 
 [ext_resource type="Script" uid="uid://dd0f8168hiknl" path="res://scripts/render.gd" id="1_546lt"]
 [ext_resource type="FontFile" uid="uid://b615n16ixdysn" path="res://assets/fonts/visitor2.ttf" id="2_546lt"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://dhj67hc1nayxm" path="res://assets/ui/next_turn_alt_2.png" id="11_65xic"]
 [ext_resource type="Texture2D" uid="uid://cwpdiotmtuqbr" path="res://assets/ui/reticle_1.png" id="14_65xic"]
 [ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="14_mp5xd"]
-[ext_resource type="PackedScene" uid="uid://dloe2qnv8q6co" path="res://ui/damage_selection.tscn" id="15_mp5xd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srpbi"]
 
@@ -444,10 +443,3 @@ z_as_relative = false
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAACAP3/AgAAAAAAAAAAAP3/BAAAAAAAAAAAAP//BAAAAAAAAAAAAAEABAAAAAAAAAACAP//AgAAAAAAAAACAAEAAgAAAAAAAAD+//3/BgAAAAAAAAD+////BgAAAAAAAAD+/wEABgAAAAAAAAA=")
 tile_set = ExtResource("14_mp5xd")
-
-[node name="DamageSelection" parent="." instance=ExtResource("15_mp5xd")]
-layout_mode = 1
-offset_left = 400.0
-offset_top = 184.0
-offset_right = -400.0
-offset_bottom = -224.0

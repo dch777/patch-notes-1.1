@@ -1,0 +1,85 @@
+[gd_resource type="SpriteFrames" load_steps=13 format=3 uid="uid://b2ykqlkalicxj"]
+
+[ext_resource type="Texture2D" uid="uid://4s2pae36ao5u" path="res://assets/sprites/characters/robot_laser_east_1.png" id="1_3bkdm"]
+[ext_resource type="Texture2D" uid="uid://dqig1k3a6xf2g" path="res://assets/sprites/characters/robot_laser_east_2.png" id="2_h21va"]
+[ext_resource type="Texture2D" uid="uid://bokgmq4jt6nfl" path="res://assets/sprites/characters/robot_laser_east_3.png" id="3_il86p"]
+[ext_resource type="Texture2D" uid="uid://bkursg3xn80ah" path="res://assets/sprites/characters/robot_laser_north_1.png" id="4_al8am"]
+[ext_resource type="Texture2D" uid="uid://c7ygn8hbahue1" path="res://assets/sprites/characters/robot_laser_north_2.png" id="5_vvnuk"]
+[ext_resource type="Texture2D" uid="uid://bpekhjddot17p" path="res://assets/sprites/characters/robot_laser_north_3.png" id="6_o7ehh"]
+[ext_resource type="Texture2D" uid="uid://c42722dgfx5a4" path="res://assets/sprites/characters/robot_laser_south_1.png" id="7_epk8n"]
+[ext_resource type="Texture2D" uid="uid://cskr0oww7jgj" path="res://assets/sprites/characters/robot_laser_south_2.png" id="8_s3ltk"]
+[ext_resource type="Texture2D" uid="uid://bqb7u5fxaf0yh" path="res://assets/sprites/characters/robot_laser_south_3.png" id="9_tdsjm"]
+[ext_resource type="Texture2D" uid="uid://dt2hbdyaeic8k" path="res://assets/sprites/characters/robot_laser_west_1.png" id="10_4p0ht"]
+[ext_resource type="Texture2D" uid="uid://cc454p6dky3np" path="res://assets/sprites/characters/robot_laser_west_2.png" id="11_msf4x"]
+[ext_resource type="Texture2D" uid="uid://u3cvdqnjtu0q" path="res://assets/sprites/characters/robot_laser_west_3.png" id="12_daorh"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3bkdm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h21va")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_il86p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h21va")
+}],
+"loop": true,
+"name": &"east",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_al8am")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vvnuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o7ehh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vvnuk")
+}],
+"loop": true,
+"name": &"north",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_epk8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s3ltk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tdsjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_s3ltk")
+}],
+"loop": true,
+"name": &"south",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4p0ht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_msf4x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_daorh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_msf4x")
+}],
+"loop": true,
+"name": &"west",
+"speed": 5.0
+}]
