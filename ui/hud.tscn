@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://mco2qos1hl16"]
+[gd_scene load_steps=22 format=4 uid="uid://mco2qos1hl16"]
 
 [ext_resource type="Script" uid="uid://dd0f8168hiknl" path="res://scripts/render.gd" id="1_546lt"]
 [ext_resource type="FontFile" uid="uid://b615n16ixdysn" path="res://assets/fonts/visitor2.ttf" id="2_546lt"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://dhj67hc1nayxm" path="res://assets/ui/next_turn_alt_2.png" id="11_65xic"]
 [ext_resource type="Texture2D" uid="uid://cwpdiotmtuqbr" path="res://assets/ui/reticle_1.png" id="14_65xic"]
 [ext_resource type="TileSet" uid="uid://781fpbn2dlpn" path="res://assets/sprites/tilemaps/voxelated/voxelated_terrain.tres" id="14_mp5xd"]
+[ext_resource type="SpriteFrames" uid="uid://5ca4mnollgj2" path="res://assets/sprite_frames/rocket_model_frames.tres" id="15_mp5xd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_srpbi"]
 
@@ -92,6 +93,30 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.0
 shader_parameter/vignette_opacity = 0.5
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u6vop"]
+shader = ExtResource("9_spcu4")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(0, 24)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 2.0
+shader_parameter/roll_size = 60.00000285
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0010000000475
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.0050000477375000685
+shader_parameter/brightness = 2.0
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.5
+
 [node name="HUD" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -114,7 +139,7 @@ color = Color(0.27058825, 0.26666668, 0.30980393, 1)
 polygon = PackedVector2Array(0, 0, 248, 0, 248, 94, 56, 94, 24, 126, 24, 472, 56, 504, 376, 504, 376, 560, 440, 576, 440, 624, 864, 624, 896, 592, 896, 448, 1096, 448, 1128, 416, 1128, 128, 1096, 96, 912, 96, 912, 56, 880, 24, 280, 24, 248, 56, 248, 0, 1152, 0, 1152, 648, 0, 648)
 
 [node name="Shadow" type="Polygon2D" parent="."]
-position = Vector2(0, 48)
+position = Vector2(0, 76)
 color = Color(0, 0, 0, 0.6)
 polygon = PackedVector2Array(576, 112, 192, 304, 576, 496, 960, 304)
 
@@ -366,10 +391,18 @@ color = Color(0, 0, 0, 1)
 [node name="SkillIcon" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 216.0
-offset_top = 520.0
+offset_top = 519.0
 offset_right = 328.0
 offset_bottom = 632.0
 color = Color(0.39215687, 0.3882353, 0.39607844, 1)
+
+[node name="ColorRect" type="ColorRect" parent="SkillIcon"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 108.0
+offset_bottom = 109.0
+color = Color(0.30588236, 0.34509805, 0.2901961, 1)
 
 [node name="NextLeftBtn" type="TextureButton" parent="."]
 layout_mode = 0
@@ -430,6 +463,13 @@ offset_top = 516.0
 offset_right = 164.0
 offset_bottom = 636.0
 
+[node name="SkillIconCRT" type="ColorRect" parent="Shaders"]
+material = SubResource("ShaderMaterial_u6vop")
+offset_left = 220.0
+offset_top = 523.0
+offset_right = 324.0
+offset_bottom = 628.0
+
 [node name="Ground" type="TileMapLayer" parent="."]
 z_as_relative = false
 y_sort_enabled = true
@@ -441,5 +481,11 @@ tile_set = ExtResource("14_mp5xd")
 [node name="Stuff" type="TileMapLayer" parent="Ground"]
 z_as_relative = false
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAACAP3/AgAAAAAAAAAAAP3/BAAAAAAAAAAAAP//BAAAAAAAAAAAAAEABAAAAAAAAAACAP//AgAAAAAAAAACAAEAAgAAAAAAAAD+//3/BgAAAAAAAAD+////BgAAAAAAAAD+/wEABgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAACAP3/AgAAAAAAAAACAP//AgAAAAAAAAACAAEAAgAAAAAAAAAAAP3/BAAAAAAAAAAAAP//BAAAAAAAAAAAAAEABAAAAAAAAAD+//3/BgAAAAAAAAD+////BgAAAAAAAAD+/wEABgAAAAAAAAA=")
 tile_set = ExtResource("14_mp5xd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(271.99997, 576.00006)
+scale = Vector2(0.3, 0.3)
+sprite_frames = ExtResource("15_mp5xd")
+frame_progress = 0.3679943
